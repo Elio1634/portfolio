@@ -1,93 +1,184 @@
-ly<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GOMEZ Ely</title>
+<title>Portfolio Futuriste - Ely Gomez</title>
 
-
-<!-- Import police futuriste -->
+<!-- Police futuriste -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-
-<!-- Import Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-
 <style>
-body {
-margin: 0;
-padding: 0;
-font-family: 'Orbitron', sans-serif;
-background: #0a0f1d;
-color: white;
-overflow-x: hidden;
-}
-canvas {
-position: fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100vh;
-z-index: -1;
-}
-header {
-text-align: center;
-padding: 100px 20px;
-}
-h1 {
-font-size: 3rem;
-text-shadow: 0 0 15px #00f0ff;
-animation: neonPulse 2s infinite alternate;
-}
-@keyframes neonPulse {
-from { text-shadow: 0 0 5px #00f0ff; }
-to { text-shadow: 0 0 25px #00e6b8; }
-}
-section {
-max-width: 1000px;
-margin: 80px auto;
-padding: 40px;
-background: rgba(255,255,255,0.05);
-border-radius: 12px;
-backdrop-filter: blur(6px);
-opacity: 0;
-transform: translateY(50px);
-transition: all 0.9s ease;
-}
-section.show {
-opacity: 1;
-transform: translateY(0);
-}
-.card {
-background: rgba(0,255,255,0.07);
-padding: 20px;
-margin: 15px 0;
-border-radius: 8px;
-cursor: pointer;
-transition: transform .5s;
-}
-.card:hover {
-transform: perspective(600px) rotateX(6deg) rotateY(-6deg) scale(1.03);
-}
+  body {
+    margin:0;
+    padding:0;
+    font-family:'Orbitron',sans-serif;
+    background:#0a0f1d;
+    color:white;
+    overflow-x:hidden;
+  }
+  canvas{
+    position:fixed;
+    top:0; left:0;
+    width:100vw;
+    height:100vh;
+    z-index:-1;
+  }
+  header{
+    text-align:center;
+    padding:100px 20px;
+  }
+  h1{
+    font-size:3rem;
+    text-shadow:0 0 15px #00f0ff, 0 0 30px #00ffea;
+    animation: neonPulse 1.8s infinite alternate;
+  }
+  h2{
+    text-shadow:0 0 10px #00eaff;
+  }
+  @keyframes neonPulse{
+    from {text-shadow:0 0 5px #00f0ff,0 0 15px #00ffea;}
+    to {text-shadow:0 0 25px #00ffea,0 0 50px #00f0ff;}
+  }
+  section{
+    max-width:1000px;
+    margin:80px auto;
+    padding:40px;
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    backdrop-filter:blur(6px);
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.9s ease;
+  }
+  section.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .card{
+    background: rgba(0,255,255,0.07);
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+    cursor:pointer;
+    transition: transform .5s, box-shadow .5s;
+  }
+  .card:hover{
+    transform: perspective(600px) rotateX(8deg) rotateY(-8deg) scale(1.05);
+    box-shadow:0 0 20px #00ffea, 0 0 40px #00f0ff;
+  }
+  a{
+    color:#00eaff;
+    text-decoration:none;
+  }
+  a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
 
-
 <canvas id="bg"></canvas>
 
-
 <header>
-<h1>GOMEZ Ely</h1>
-<p> Technicien Informatique </p>
+  <h1>Ely Gomez</h1>
+  <p>Développeur – Informatique – Innovation</p>
 </header>
 
-
 <section>
-<h2>Présentation</h2>
-<p>Bienvenue dans mon univers numérique futuriste !</p>
+  <h2>Présentation</h2>
+  <p>Bienvenue dans mon univers numérique futuriste ! Passionné par le développement web et les technologies innovantes.</p>
 </section>
 
+<section>
+  <h2>Compétences</h2>
+  <div class="card">HTML / CSS</div>
+  <div class="card">JavaScript</div>
+  <div class="card">Python</div>
+  <div class="card">PHP / SQL</div>
+</section>
 
+<section>
+  <h2>Projets</h2>
+  <div class="card">Projet 1 – Interface 3D</div>
+  <div class="card">Projet 2 – Application Web</div>
+  <div class="card">Projet 3 – Script Python automatisé</div>
+</section>
+
+<section>
+  <h2>Formations</h2>
+  <p>Bientôt rempli</p>
+</section>
+
+<section>
+  <h2>Expériences</h2>
+  <p>Bientôt rempli</p>
+</section>
+
+<section>
+  <h2>CV</h2>
+  <p><a href="#">Télécharger mon CV</a></p>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Envoyez-moi un message : <a href="mailto:email@exemple.com">email@exemple.com</a></p>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Fade-in des sections
+  const sections=document.querySelectorAll('section');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add('show');
+    });
+  },{threshold:0.2});
+  sections.forEach(sec=>observer.observe(sec));
+
+  // Fond animé 3D futuriste
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,2000);
+  const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true});
+  renderer.setSize(window.innerWidth,window.innerHeight);
+
+  const geometry=new THREE.BufferGeometry();
+  const vertices=[];
+  for(let i=0;i<1500;i++){
+    vertices.push((Math.random()-0.5)*2000);
+    vertices.push((Math.random()-0.5)*2000);
+    vertices.push((Math.random()-0.5)*2000);
+  }
+  geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+  const material=new THREE.PointsMaterial({color:0x00ffff,size:2});
+  const stars=new THREE.Points(geometry,material);
+  scene.add(stars);
+
+  // Lignes entre particules
+  const lineMaterial=new THREE.LineBasicMaterial({color:0x00ffff,opacity:0.05,transparent:true});
+  for(let i=0;i<500;i++){
+    const points=[];
+    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
+    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
+    const lineGeo=new THREE.BufferGeometry().setFromPoints(points);
+    const line=new THREE.Line(lineGeo,lineMaterial);
+    scene.add(line);
+  }
+
+  camera.position.z=400;
+  function animate(){
+    requestAnimationFrame(animate);
+    stars.rotation.x+=0.0008;
+    stars.rotation.y+=0.0008;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  // Ajustement sur redimensionnement
+  window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  });
+</script>
+
+</body>
 </html>
