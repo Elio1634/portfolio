@@ -36,6 +36,11 @@
   h2{
     text-shadow:0 0 10px #00eaff;
   }
+  h3{
+    color:#00f0ff;
+    text-shadow:0 0 8px #00f0ff;
+    margin-bottom:12px;
+  }
   @keyframes neonPulse{
     from {text-shadow:0 0 5px #00f0ff,0 0 15px #00ffea;}
     to {text-shadow:0 0 25px #00ffea,0 0 50px #00f0ff;}
@@ -64,15 +69,61 @@
     transition: transform .5s, box-shadow .5s;
   }
   .link-card:hover {
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-  transform: perspective(600px) rotateX(4deg) rotateY(-4deg) scale(1.05);
-  background: rgba(0, 255, 255, 0.08);
-}
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+    transform: perspective(600px) rotateX(4deg) rotateY(-4deg) scale(1.05);
+    background: rgba(0, 255, 255, 0.08);
+  }
   a{
     color:#00eaff;
     text-decoration:none;
   }
   a:hover{text-decoration:underline;}
+
+  /* ---------- Jauges de langues ---------- */
+  .lang-gauges { display:flex; flex-wrap:wrap; gap:24px; justify-content:flex-start; margin-top:20px;}
+  .lang-block { display:flex; flex-direction:column; gap:12px; min-width:200px; }
+  .gauge-card {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    background: rgba(0,255,255,0.03);
+    padding:14px;
+    border-radius:10px;
+    min-width:240px;
+    max-width:360px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+  }
+  .gauge { width:96px;height:96px; flex:0 0 96px; }
+  .gauge-bg {
+    fill:none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width:12;
+  }
+  .gauge-fg {
+    fill:none;
+    stroke: #00eaff;
+    stroke-width:12;
+    stroke-linecap:round;
+    transform-origin:60px 60px;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 600ms cubic-bezier(.2,.9,.3,1), stroke 400ms ease;
+  }
+  .gauge-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size:18px;
+    fill: #dfffff;
+    font-weight:700;
+  }
+  .gauge-meta { flex:1; min-width:120px; }
+  .lang-title { font-weight:700; color:#bffcff; margin-bottom:6px; }
+  .lang-range { width:100%; accent-color:#00eaff; -webkit-appearance:none; background:transparent; }
+  .lang-range::-webkit-slider-runnable-track { height:6px; background:rgba(255,255,255,0.06); border-radius:6px; }
+  .lang-range::-webkit-slider-thumb { -webkit-appearance:none; width:14px;height:14px;border-radius:50%; background:#00eaff; margin-top:-4px; box-shadow:0 0 8px rgba(0,234,255,0.6); }
+  .lang-range:focus { outline: none; }
+  @media (max-width:700px){
+    .lang-gauges { justify-content:center; }
+    .gauge-card { width:100%; max-width:none; }
+  }
 </style>
 </head>
 <body>
@@ -98,100 +149,14 @@
   <div class="card">Configuration Matériels réseaux</div>
 </section>
 
- <section id="languages">
-  <h2>Langues</h2>
-
-  <div class="lang-gauges">
-
-    <!-- ANGLAIS -->
-    <div class="lang-block">
-      <h3>Anglais</h3>
-      <div class="gauge-card">
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">80%</text>
-        </svg>
-        <div class="gauge-meta">
-          <div class="lang-title">Écrit</div>
-          <input class="lang-range" type="range" min="0" max="100" value="80" data-lang="english_written">
-        </div>
-      </div>
-      <div class="gauge-card">
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">70%</text>
-        </svg>
-        <div class="gauge-meta">
-          <div class="lang-title">Parlé</div>
-          <input class="lang-range" type="range" min="0" max="100" value="70" data-lang="english_spoken">
-        </div>
-      </div>
-      <div class="gauge-card">
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">85%</text>
-        </svg>
-        <div class="gauge-meta">
-          <div class="lang-title">Compréhension</div>
-          <input class="lang-range" type="range" min="0" max="100" value="85" data-lang="english_listen">
-        </div>
-      </div>
-    </div>
-
-    <!-- ESPAGNOL -->
-    <div class="lang-block">
-      <h3>Espagnol</h3>
-      <div class="gauge-card">
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">65%</text>
-        </svg>
-        <div class="gauge-meta">
-          <div class="lang-title">Écrit</div>
-          <input class="lang-range" type="range" min="0" max="100" value="65" data-lang="spanish_written">
-        </div>
-      </div>
-      <div class="gauge-card">
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">60%</text>
-        </svg>
-        <div class="gauge-meta">
-          <div class="lang-title">Parlé</div>
-          <input class="lang-range" type="range" min="0" max="100" value="60" data-lang="spanish_spoken">
-        </div>
-      </div>
-      <div class="gauge-card">
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">70%</text>
-        </svg>
-        <div class="gauge-meta">
-          <div class="lang-title">Compréhension</div>
-          <input class="lang-range" type="range" min="0" max="100" value="70" data-lang="spanish_listen">
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-  
 <section>
   <h2>Projets</h2>
   <div class="card">Projet 1 – Dragon animé</div>
   <div class="card">Projet 2 – Note Galaxie</div>
   <div class="card">Projet 3 – Généologie des objets</div>
 </section>
-  
 
+<section>
   <h2>Formations</h2>
 
   <a href="https://epl.montpellier-orb-herault.educagri.fr/lycee-la-condamine/enseignement" target="_blank" class="card link-card">
@@ -228,110 +193,16 @@
 
 </section>
 
+<!-- Section Langues -->
 <section>
-  <h2>Expériences</h2>
+  <h2>Langues</h2>
+  <div class="lang-gauges">
 
-  <div class="card">
-    <strong>Technicien Réseaux</strong> – JM Sud Informatique (34600)
-    <br><small>2022</small>
-    <ul>
-      <li>Mise en place & sauvegarde postes de travail</li>
-      <li>Réparation matériel informatique</li>
-      <li>Installation postes utilisateurs</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <strong>Technicien Informatique</strong> – ConsortNT (81000)
-    <br><small>2023-2024</small>
-    <ul>
-      <li>Supervision</li>
-      <li>Traitement des backlogs</li>
-      <li>Support téléphonique</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <strong>Administrateur Informatique</strong> – Tellus, St-Germain-de-Salles (03140)
-    <br><small>2024</small>
-    <ul>
-      <li>Support utilisateurs</li>
-      <li>Gestion parc imprimantes</li>
-      <li>Administration serveurs</li>
-      <li>Mise en place d’un serveur Zabbix</li>
-    </ul>
-  </div>
-
-</section>
-
-
-<section>
-  <h2>CV</h2>
-  <p><a href="#">Télécharger mon CV</a></p>
-</section>
-
-<section>
-  <h2>Contact</h2>
-  <p>Envoyez-moi un message : <a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a></p>
-  <p>Portable 06.48.89.61.39</p>
-</section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // Fade-in des sections
-  const sections=document.querySelectorAll('section');
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting) entry.target.classList.add('show');
-    });
-  },{threshold:0.2});
-  sections.forEach(sec=>observer.observe(sec));
-
-  // Fond animé 3D futuriste
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,2000);
-  const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true});
-  renderer.setSize(window.innerWidth,window.innerHeight);
-
-  const geometry=new THREE.BufferGeometry();
-  const vertices=[];
-  for(let i=0;i<1500;i++){
-    vertices.push((Math.random()-0.5)*2000);
-    vertices.push((Math.random()-0.5)*2000);
-    vertices.push((Math.random()-0.5)*2000);
-  }
-  geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-  const material=new THREE.PointsMaterial({color:0x00ffff,size:2});
-  const stars=new THREE.Points(geometry,material);
-  scene.add(stars);
-
-  // Lignes entre particules
-  const lineMaterial=new THREE.LineBasicMaterial({color:0x00ffff,opacity:0.05,transparent:true});
-  for(let i=0;i<500;i++){
-    const points=[];
-    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
-    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
-    const lineGeo=new THREE.BufferGeometry().setFromPoints(points);
-    const line=new THREE.Line(lineGeo,lineMaterial);
-    scene.add(line);
-  }
-
-  camera.position.z=400;
-  function animate(){
-    requestAnimationFrame(animate);
-    stars.rotation.x+=0.0008;
-    stars.rotation.y+=0.0008;
-    renderer.render(scene,camera);
-  }
-  animate();
-
-  // Ajustement sur redimensionnement
-  window.addEventListener('resize',()=>{
-    camera.aspect=window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth,window.innerHeight);
-  });
-</script>
-
-</body>
-</html>
+    <!-- ANGLAIS -->
+    <div class="lang-block">
+      <h3>Anglais</h3>
+      <div class="gauge-card">
+        <svg class="gauge" viewBox="0 0 120 120">
+          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="339.29"></circle>
+          <text class="gauge-value" x="60" y="66" text-anchor="middle">80%</text
