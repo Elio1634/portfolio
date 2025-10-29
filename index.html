@@ -325,61 +325,94 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-  // Fade-in des sections
-  const sections=document.querySelectorAll('section');
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting) entry.target.classList.add('show');
+  // --- Apparition des sections ---
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
     });
-  },{threshold:0.2});
-  sections.forEach(sec=>observer.observe(sec));
+  }, { threshold: 0.2 });
+  sections.forEach(sec => observer.observe(sec));
 
-  // Fond animé 3D futuriste
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,2000);
-  const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true});
-  renderer.setSize(window.innerWidth,window.innerHeight);
+  // --- Fond 3D Futuriste ---
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    2000
+  );
 
-  const geometry=new THREE.BufferGeometry();
-  const vertices=[];
-  for(let i=0;i<1500;i++){
-    vertices.push((Math.random()-0.5)*2000);
-    vertices.push((Math.random()-0.5)*2000);
-    vertices.push((Math.random()-0.5)*2000);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('bg'),
+    alpha: true
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  // --- Étoiles ---
+  const geometry = new THREE.BufferGeometry();
+  const vertices = [];
+  for (let i = 0; i < 1500; i++) {
+    vertices.push((Math.random() - 0.5) * 2000);
+    vertices.push((Math.random() - 0.5) * 2000);
+    vertices.push((Math.random() - 0.5) * 2000);
   }
-  geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-  const material=new THREE.PointsMaterial({color:0x00ffff,size:2});
-  const stars=new THREE.Points(geometry,material);
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+  const material = new THREE.PointsMaterial({
+    color: 0x00ffff,
+    size: 2,
+    transparent: true,
+    opacity: 0.8
+  });
+  const stars = new THREE.Points(geometry, material);
   scene.add(stars);
 
-  // Lignes entre particules
-  const lineMaterial=new THREE.LineBasicMaterial({color:0x00ffff,opacity:0.05,transparent:true});
-  for(let i=0;i<500;i++){
-    const points=[];
-    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
-    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
-    const lineGeo=new THREE.BufferGeometry().setFromPoints(points);
-    const line=new THREE.Line(lineGeo,lineMaterial);
+  // --- Lignes lumineuses ---
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x00ffff,
+    opacity: 0.05,
+    transparent: true,
+  });
+  for (let i = 0; i < 400; i++) {
+    const points = [];
+    points.push(
+      new THREE.Vector3(
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000
+      )
+    );
+    points.push(
+      new THREE.Vector3(
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000
+      )
+    );
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(lineGeo, lineMaterial);
     scene.add(line);
   }
 
-  camera.position.z=400;
-  function animate(){
+  // --- Position caméra & animation ---
+  camera.position.z = 400;
+  function animate() {
     requestAnimationFrame(animate);
-    stars.rotation.x+=0.0008;
-    stars.rotation.y+=0.0008;
-    renderer.render(scene,camera);
+    stars.rotation.x += 0.0008;
+    stars.rotation.y += 0.0008;
+    scene.rotation.y += 0.0001;
+    renderer.render(scene, camera);
   }
   animate();
 
-  // Ajustement sur redimensionnement
-  window.addEventListener('resize',()=>{
-    camera.aspect=window.innerWidth/window.innerHeight;
+  // --- Redimensionnement ---
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth,window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight);
   });
 </script>
 
-</body>
-</html>
