@@ -1,146 +1,184 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Les animaux de nos régions — version simplifiée</title>
-  <meta name="description" content="Un site pédagogique sur les animaux, structure inspirée de animaux.net.">
-  <style>
-    :root{--bg:#f7f7f6;--card:#fff;--accent:#2f7a2f;--muted:#666}
-    *{box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;background:var(--bg);color:#111}
-    header{background:#fff;border-bottom:1px solid #e6e6e6}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#6aa96a);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:12px;flex-wrap:wrap}
-    nav a{color:var(--accent);text-decoration:none;font-weight:600}
-    main{display:grid;grid-template-columns:1fr 320px;gap:24px;padding:28px 0}
-    .hero{background:linear-gradient(180deg,rgba(47,122,47,0.06),transparent);padding:18px;border-radius:10px}
-    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:18px}
-    .card{background:var(--card);padding:14px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-    .card img{width:100%;height:140px;object-fit:cover;border-radius:6px}
-    .muted{color:var(--muted);font-size:0.95rem}
-    aside .widget{background:var(--card);padding:14px;border-radius:8px;margin-bottom:16px}
-    footer{padding:26px 0;color:var(--muted);font-size:0.9rem}
-    .search{display:flex;gap:8px}
-    .search input{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px}
-    .btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
-    @media (max-width:900px){main{grid-template-columns:1fr} aside{order:2}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Futuriste - Ely Gomez</title>
+
+<!-- Police futuriste -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin:0;
+    padding:0;
+    font-family:'Orbitron',sans-serif;
+    background:#0a0f1d;
+    color:white;
+    overflow-x:hidden;
+  }
+  canvas{
+    position:fixed;
+    top:0; left:0;
+    width:100vw;
+    height:100vh;
+    z-index:-1;
+  }
+  header{
+    text-align:center;
+    padding:100px 20px;
+  }
+  h1{
+    font-size:3rem;
+    text-shadow:0 0 15px #00f0ff, 0 0 30px #00ffea;
+    animation: neonPulse 1.8s infinite alternate;
+  }
+  h2{
+    text-shadow:0 0 10px #00eaff;
+  }
+  @keyframes neonPulse{
+    from {text-shadow:0 0 5px #00f0ff,0 0 15px #00ffea;}
+    to {text-shadow:0 0 25px #00ffea,0 0 50px #00f0ff;}
+  }
+  section{
+    max-width:1000px;
+    margin:80px auto;
+    padding:40px;
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    backdrop-filter:blur(6px);
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.9s ease;
+  }
+  section.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .card{
+    background: rgba(0,255,255,0.07);
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+    cursor:pointer;
+    transition: transform .5s, box-shadow .5s;
+  }
+  .card:hover{
+    transform: perspective(600px) rotateX(8deg) rotateY(-8deg) scale(1.05);
+    box-shadow:0 0 20px #00ffea, 0 0 40px #00f0ff;
+  }
+  a{
+    color:#00eaff;
+    text-decoration:none;
+  }
+  a:hover{text-decoration:underline;}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
-      <div class="brand">
-        <div class="logo">C</div>
-        <div>
-          <h1 style="margin:0;font-size:1.1rem">Les animaux de nos régions</h1>
-          <div class="muted">Un regard curieux sur ces petites bêtes</div>
-        </div>
-      </div>
-      <nav aria-label="Menu principal">
-        <ul>
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Fiches espèces</a></li>
-          <li><a href="#">Conseils</a></li>
-          <li><a href="#">Ressources</a></li>
-          <li><a href="#">À propos</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <div class="container">
-    <main>
-      <section>
-        <div class="hero">
-          <h2 style="margin:0 0 8px 0">Bienvenue !</h2>
-          <p class="muted">Les animaux souffrent parfois d'une mauvaise réputation. Ce site vise à les présenter, aider à les identifier et proposer des conseils pour cohabiter dans le jardin.</p>
-        </div>
+<canvas id="bg"></canvas>
 
-        <div style="display:flex;gap:12px;margin-top:18px;align-items:center;justify-content:space-between">
-          <div class="muted">Dernières mises à jour : <strong>mars 2023</strong></div>
-          <div style="display:flex;gap:8px">
-            <input type="text" placeholder="Rechercher une espèce" style="padding:8px;border:1px solid #ddd;border-radius:6px">
-            <button class="btn">Rechercher</button>
-          </div>
-        </div>
+<header>
+  <h1>Ely Gomez</h1>
+  <p>Développeur – Informatique – Innovation</p>
+</header>
 
-        <h3 style="margin-top:22px">Portraits de animaux</h3>
-        <div class="cards" aria-live="polite">
-          <article class="card">
-            <img src="https://via.placeholder.com/600x400?text=Chenille+1" alt="Photo d'une animal">
-            <h4 style="margin:8px 0 4px 0">Le petit paon de nuit</h4>
-            <p class="muted">Plante-hôte : chêne, feuillus. Période d'observation : été. <a href="#">En savoir +</a></p>
-          </article>
+<section>
+  <h2>Présentation</h2>
+  <p>Bienvenue dans mon univers numérique futuriste ! Passionné par le développement web et les technologies innovantes.</p>
+</section>
 
-          <article class="card">
-            <img src="https://via.placeholder.com/600x400?text=Chenille+2" alt="Photo d'une animal">
-            <h4 style="margin:8px 0 4px 0">La pudibonde</h4>
-            <p class="muted">Plante-hôte : feuillus. Nymphose : automne. <a href="#">En savoir +</a></p>
-          </article>
+<section>
+  <h2>Compétences</h2>
+  <div class="card">HTML / CSS</div>
+  <div class="card">JavaScript</div>
+  <div class="card">Python</div>
+  <div class="card">PHP / SQL</div>
+</section>
 
-          <article class="card">
-            <img src="https://via.placeholder.com/600x400?text=Chenille+3" alt="Photo d'une animal">
-            <h4 style="margin:8px 0 4px 0">Le cossus gâte-bois</h4>
-            <p class="muted">Connu pour creuser dans le bois. <a href="#">En savoir +</a></p>
-          </article>
+<section>
+  <h2>Projets</h2>
+  <div class="card">Projet 1 – Interface 3D</div>
+  <div class="card">Projet 2 – Application Web</div>
+  <div class="card">Projet 3 – Script Python automatisé</div>
+</section>
 
-        </div>
+<section>
+  <h2>Formations</h2>
+  <p>Bientôt rempli</p>
+</section>
 
-        <h3 style="margin-top:26px">Articles récents</h3>
-        <div class="card" style="margin-top:12px">
-          <h4 style="margin:0 0 6px 0">Rando-animaux à Saint-Pons en Ardèche</h4>
-          <p class="muted">4 mai 2022 — Compte-rendu d'une sortie naturaliste.</p>
-        </div>
+<section>
+  <h2>Expériences</h2>
+  <p>Bientôt rempli</p>
+</section>
 
-      </section>
+<section>
+  <h2>CV</h2>
+  <p><a href="#">Télécharger mon CV</a></p>
+</section>
 
-      <aside>
-        <div class="widget">
-          <h4 style="margin-top:0">S'abonner</h4>
-          <p class="muted">Recevez les nouveautés par e-mail.</p>
-          <form onsubmit="event.preventDefault();alert('Merci ! (formulaire de démonstration)')">
-            <input type="email" placeholder="Votre adresse e-mail" required style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;margin-bottom:8px">
-            <button class="btn" style="width:100%">S'abonner</button>
-          </form>
-        </div>
+<section>
+  <h2>Contact</h2>
+  <p>Envoyez-moi un message : <a href="mailto:email@exemple.com">email@exemple.com</a></p>
+</section>
 
-        <div class="widget">
-          <h4 style="margin-top:0">Astuces rapides</h4>
-          <ul class="muted">
-            <li>Ne touchez pas les animaux "poilues" sans précaution.</li>
-            <li>Favorisez les plantes hôtes locales.</li>
-            <li>Photographiez et notez lieu/date pour l'identification.</li>
-          </ul>
-        </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Fade-in des sections
+  const sections=document.querySelectorAll('section');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add('show');
+    });
+  },{threshold:0.2});
+  sections.forEach(sec=>observer.observe(sec));
 
-        <div class="widget">
-          <h4 style="margin-top:0">Ressources</h4>
-          <p class="muted">Liens vers guides et ouvrages (ex. : catalogues, associations naturalistes).</p>
-        </div>
-      </aside>
-    </main>
+  // Fond animé 3D futuriste
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,2000);
+  const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true});
+  renderer.setSize(window.innerWidth,window.innerHeight);
 
-    <footer>
-      <div class="container" style="display:flex;justify-content:space-between;align-items:center">
-        <div>
-          © 2025 — Les animaux de nos régions · Site d'exemple. Toutes photos : auteur ou domaine public.
-        </div>
-        <div class="muted">Dernière mise à jour : mars 2023</div>
-      </div>
-    </footer>
-  </div>
+  const geometry=new THREE.BufferGeometry();
+  const vertices=[];
+  for(let i=0;i<1500;i++){
+    vertices.push((Math.random()-0.5)*2000);
+    vertices.push((Math.random()-0.5)*2000);
+    vertices.push((Math.random()-0.5)*2000);
+  }
+  geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+  const material=new THREE.PointsMaterial({color:0x00ffff,size:2});
+  const stars=new THREE.Points(geometry,material);
+  scene.add(stars);
 
-  <!-- Petit script pour interactions simples -->
-  <script>
-    // Exemple : transformation en mode sombre si l'utilisateur préfère
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.style.setProperty('--bg','#0f1112');
-      document.documentElement.style.setProperty('--card','#0b0b0b');
-      document.documentElement.style.setProperty('--muted','#9aa0a6');
-    }
-  </script>
+  // Lignes entre particules
+  const lineMaterial=new THREE.LineBasicMaterial({color:0x00ffff,opacity:0.05,transparent:true});
+  for(let i=0;i<500;i++){
+    const points=[];
+    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
+    points.push(new THREE.Vector3((Math.random()-0.5)*2000,(Math.random()-0.5)*2000,(Math.random()-0.5)*2000));
+    const lineGeo=new THREE.BufferGeometry().setFromPoints(points);
+    const line=new THREE.Line(lineGeo,lineMaterial);
+    scene.add(line);
+  }
+
+  camera.position.z=400;
+  function animate(){
+    requestAnimationFrame(animate);
+    stars.rotation.x+=0.0008;
+    stars.rotation.y+=0.0008;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  // Ajustement sur redimensionnement
+  window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  });
+</script>
+
 </body>
 </html>
