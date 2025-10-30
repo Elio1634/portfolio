@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+  /* ----------------- Styles généraux ----------------- */
   body {
     margin:0;
     padding:0;
@@ -34,12 +35,17 @@
     animation: neonPulse 1.8s infinite alternate;
   }
   h2{
+    font-size:2rem;
     text-shadow:0 0 10px #00eaff;
+    margin-bottom:20px;
   }
   h3{
     color:#00f0ff;
     text-shadow:0 0 8px #00f0ff;
     margin-bottom:12px;
+  }
+  p{
+    line-height:1.6;
   }
   @keyframes neonPulse{
     from {text-shadow:0 0 5px #00f0ff,0 0 15px #00ffea;}
@@ -73,14 +79,13 @@
     transform: perspective(600px) rotateX(4deg) rotateY(-4deg) scale(1.05);
     background: rgba(0, 255, 255, 0.08);
   }
-
   a{
     color:#00eaff;
     text-decoration:none;
   }
   a:hover{text-decoration:underline;}
 
-  /* ---------- Jauges de langues ---------- */
+  /* ----------------- Langues ----------------- */
   .lang-gauges { display:flex; flex-wrap:wrap; gap:24px; justify-content:flex-start; margin-top:20px;}
   .lang-block { display:flex; flex-direction:column; gap:12px; min-width:200px; }
   .gauge-card {
@@ -94,182 +99,41 @@
     max-width:360px;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
   }
-  .gauge { width:96px;height:96px; flex:0 0 96px; }
-  .gauge-bg {
-    fill:none;
-    stroke: rgba(255,255,255,0.06);
-    stroke-width:12;
-  }
-  .gauge-fg {
-    fill:none;
-    stroke: #00eaff;
-    stroke-width:12;
-    stroke-linecap:round;
-    transform-origin:60px 60px;
-    transform: rotate(-90deg);
-    transition: stroke-dashoffset 600ms cubic-bezier(.2,.9,.3,1), stroke 400ms ease;
-  }
-  .gauge-value {
-    font-family: 'Orbitron', sans-serif;
-    font-size:18px;
-    fill: #dfffff;
-    font-weight:700;
-  }
-  .gauge-meta { flex:1; min-width:120px; }
-  .lang-title { font-weight:700; color:#bffcff; margin-bottom:6px; }
-  .lang-range { width:100%; accent-color:#00eaff; -webkit-appearance:none; background:transparent; }
-  .lang-range::-webkit-slider-runnable-track { height:6px; background:rgba(255,255,255,0.06); border-radius:6px; }
-  .lang-range::-webkit-slider-thumb { -webkit-appearance:none; width:14px;height:14px;border-radius:50%; background:#00eaff; margin-top:-4px; box-shadow:0 0 8px rgba(0,234,255,0.6); }
-  .lang-range:focus { outline: none; }
+  .gauge-item { text-align:center; }
+  .gauge-label { font-size:0.85rem; margin-bottom:4px; color:#bffcff; }
+  .gauge { width:96px;height:96px; flex:0 0 96px; display:block; margin:0 auto; }
+  .gauge-bg { fill:none; stroke: rgba(255,255,255,0.06); stroke-width:12; }
+  .gauge-fg { fill:none; stroke:#00eaff; stroke-width:12; stroke-linecap:round; transform-origin:60px 60px; transform: rotate(-90deg); transition: stroke-dashoffset 600ms cubic-bezier(.2,.9,.3,1), stroke 400ms ease; }
+  .gauge-value { font-family:'Orbitron',sans-serif; font-size:18px; fill:#dfffff; font-weight:700; }
+  
+  /* ----------------- Expériences & Formations ----------------- */
+  .experience-card, .formation-info { margin-bottom:20px; }
+  .experience-card h3, .formation-info strong { font-size:1.2rem; color:#00eaff; }
+  .experience-card .lieu, .experience-card .date, .formation-info .lieu, .formation-info .annee { font-size:0.85rem; color:#bffcff; display:block; }
+
+  /* ----------------- Hobbies ----------------- */
+  .hobbies { display:flex; flex-wrap:wrap; gap:20px; }
+  .hobby-card { background: rgba(0,255,255,0.07); padding:16px; border-radius:8px; flex:1 1 180px; text-align:center; }
+
   @media (max-width:700px){
     .lang-gauges { justify-content:center; }
     .gauge-card { width:100%; max-width:none; }
   }
-  /* --- Styles pour différencier les titres, lieux et dates --- */
-
-/* Formations */
-.formation-info strong {
-  font-size: 1.1rem;
-  color: #00ffff;
-}
-
-.formation-info .lieu,
-.formation-info .annee {
-  display: block;
-  font-size: 0.85rem;
-  color: #a8dfff;
-  opacity: 0.8;
-  margin-top: 4px;
-}
-
-/* Expériences */
-.experience-card h3 {
-  font-size: 1.2rem;
-  color: #00ffff;
-}
-
-.experience-card .lieu,
-.experience-card .date {
-  font-size: 0.9rem;
-  color: #a8dfff;
-  opacity: 0.8;
-  margin: 2px 0 8px 0;
-}
-
-/* Missions */
-.experience-card ul {
-  margin: 0;
-  padding-left: 18px;
-}
-.experience-card ul li {
-  font-size: 1rem;
-  line-height: 1.4;
-}
-  /* CV */
- .cv-link-info strong {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
-  color: #00f0ff;
-  text-shadow: 0 0 8px #00f0ff;
-}
-  
+</style>
 </head>
 <body>
 
-<!-- Canvas pour le fond futuriste -->
 <canvas id="bg"></canvas>
 
-<style>
-  /* Canvas derrière tout le contenu */
-  canvas#bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    display: block;
-  }
-</style>
+<header>
+  <h1>Ely Gomez</h1>
+  <p>Apprenti Technicien Cybersécurité</p>
+</header>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // ----- Initialisation scène -----
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    2000
-  );
-  const renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById('bg'),
-    alpha: true, // Fond transparent
-  });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-
-  // ----- Particules (étoiles) -----
-  const starGeometry = new THREE.BufferGeometry();
-  const starVertices = [];
-  for (let i = 0; i < 1500; i++) {
-    starVertices.push((Math.random() - 0.5) * 2000);
-    starVertices.push((Math.random() - 0.5) * 2000);
-    starVertices.push((Math.random() - 0.5) * 2000);
-  }
-  starGeometry.setAttribute(
-    'position',
-    new THREE.Float32BufferAttribute(starVertices, 3)
-  );
-  const starMaterial = new THREE.PointsMaterial({ color: 0x00ffff, size: 2 });
-  const stars = new THREE.Points(starGeometry, starMaterial);
-  scene.add(stars);
-
-  // ----- Lignes entre particules -----
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: 0x00ffff,
-    opacity: 0.05,
-    transparent: true,
-  });
-  for (let i = 0; i < 500; i++) {
-    const points = [];
-    points.push(
-      new THREE.Vector3(
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000
-      )
-    );
-    points.push(
-      new THREE.Vector3(
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000
-      )
-    );
-    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-    const line = new THREE.Line(lineGeo, lineMaterial);
-    scene.add(line);
-  }
-
-  camera.position.z = 400;
-
-  // ----- Animation -----
-  function animate() {
-    requestAnimationFrame(animate);
-    stars.rotation.x += 0.0008;
-    stars.rotation.y += 0.0008;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // ----- Ajustement redimensionnement -----
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-</script>
-
+<section>
+  <h2>Présentation</h2>
+  <p>Bienvenue dans mon univers numérique futuriste !</p>
+</section>
 
 <section>
   <h2>Compétences</h2>
@@ -281,75 +145,70 @@
 </section>
 
 <section>
-  <!-- Anglais -->
-  <div class="lang-block">
-    <h3>Anglais</h3>
-    <div class="gauge-card">
-      <!-- Écrit -->
-      <div class="gauge-item">
-        <p class="gauge-label">Écrit</p>
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="169.65"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">50%</text>
-        </svg>
+  <h2>Langues</h2>
+  <div class="lang-gauges">
+    <!-- Anglais -->
+    <div class="lang-block">
+      <h3>Anglais</h3>
+      <div class="gauge-card">
+        <div class="gauge-item">
+          <p class="gauge-label">Écrit</p>
+          <svg class="gauge" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="169.65"></circle>
+            <text class="gauge-value" x="60" y="66" text-anchor="middle">50%</text>
+          </svg>
+        </div>
+        <div class="gauge-item">
+          <p class="gauge-label">Parlé</p>
+          <svg class="gauge" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="101.79"></circle>
+            <text class="gauge-value" x="60" y="66" text-anchor="middle">70%</text>
+          </svg>
+        </div>
+        <div class="gauge-item">
+          <p class="gauge-label">Compréhension</p>
+          <svg class="gauge" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="50.87"></circle>
+            <text class="gauge-value" x="60" y="66" text-anchor="middle">85%</text>
+          </svg>
+        </div>
       </div>
-      <!-- Parlé -->
-      <div class="gauge-item">
-        <p class="gauge-label">Parlé</p>
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="101.79"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">70%</text>
-        </svg>
-      </div>
-      <!-- Compréhension -->
-      <div class="gauge-item">
-        <p class="gauge-label">Compréhension</p>
-        <svg class="gauge" viewBox="0 0 120 120">
-          <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-          <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="50.87"></circle>
-          <text class="gauge-value" x="60" y="66" text-anchor="middle">85%</text>
-        </svg>
+    </div>
+    <!-- Espagnol -->
+    <div class="lang-block">
+      <h3>Espagnol</h3>
+      <div class="gauge-card">
+        <div class="gauge-item">
+          <p class="gauge-label">Écrit</p>
+          <svg class="gauge" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="203.57"></circle>
+            <text class="gauge-value" x="60" y="66" text-anchor="middle">40%</text>
+          </svg>
+        </div>
+        <div class="gauge-item">
+          <p class="gauge-label">Parlé</p>
+          <svg class="gauge" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="169.65"></circle>
+            <text class="gauge-value" x="60" y="66" text-anchor="middle">50%</text>
+          </svg>
+        </div>
+        <div class="gauge-item">
+          <p class="gauge-label">Compréhension</p>
+          <svg class="gauge" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="135.72"></circle>
+            <text class="gauge-value" x="60" y="66" text-anchor="middle">60%</text>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
-
-<!-- Espagnol -->
-<div class="lang-block">
-  <h3>Espagnol</h3>
-  <div class="gauge-card">
-    <!-- Écrit -->
-    <div class="gauge-item">
-      <p class="gauge-label">Écrit</p>
-      <svg class="gauge" viewBox="0 0 120 120">
-        <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-        <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="203.57"></circle>
-        <text class="gauge-value" x="60" y="66" text-anchor="middle">40%</text>
-      </svg>
-    </div>
-    <!-- Parlé -->
-    <div class="gauge-item">
-      <p class="gauge-label">Parlé</p>
-      <svg class="gauge" viewBox="0 0 120 120">
-        <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-        <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="169.64"></circle>
-        <text class="gauge-value" x="60" y="66" text-anchor="middle">50%</text>
-      </svg>
-    </div>
-    <!-- Compréhension -->
-    <div class="gauge-item">
-      <p class="gauge-label">Compréhension</p>
-      <svg class="gauge" viewBox="0 0 120 120">
-        <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
-        <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="135.72"></circle>
-        <text class="gauge-value" x="60" y="66" text-anchor="middle">60%</text>
-      </svg>
-    </div>
-  </div>
-</div>
-  
-
+</section>
 
 <section>
   <h2>Projets</h2>
@@ -360,29 +219,6 @@
 
 <section>
   <h2>Formations</h2>
-
-    <a href="https://www.uca.fr/formation/nos-formations/par-ufr-ecoles-et-iut/iut-clermont-auvergne/but/but-reseaux-et-telecommunications" target="_blank" class="card link-card">
-    <div class="formation-info">
-      <strong>BUT Réseaux & Télécom – Cybersécurité</strong>
-      <span class="lieu">Clermont-Ferrand (63000)</span>
-      <span class="annee">2024 — 2026</span>
-    </div>
-  </a>
-
-  <a href="https://www.adrar-formation.com/formation/technicien-superieur-systemes-et-reseaux/" target="_blank" class="card link-card">
-    <div class="formation-info">
-      <strong>Formation Technicien Supérieur Systèmes et Réseaux</strong>
-      <span class="lieu">Tarbes (65000)</span>
-      <span class="annee">2022 — 2023</span>
-    </div>
-  </a>
-  <a href="https://ort-france.fr/formation/bts-ciel-cybersecurite-informatique-et-reseaux-electronique/" target="_blank" class="card link-card">
-    <div class="formation-info">
-      <strong>BTS Système Numérique option Informatique et Réseaux</strong>
-      <span class="lieu">Lyon (69008)</span>
-      <span class="annee">2021 — 2022</span>
-    </div>
-  </a>
   <a href="https://epl.montpellier-orb-herault.educagri.fr/lycee-la-condamine/enseignement" target="_blank" class="card link-card">
     <div class="formation-info">
       <strong>BAC Scicence et Technologie de l'Agronomie et du Vivant</strong>
@@ -390,14 +226,35 @@
       <span class="annee">2020 — 2021</span>
     </div>
   </a>
+  <a href="https://ort-france.fr/formation/bts-ciel-cybersecurite-informatique-et-reseaux-electronique/" target="_blank" class="card link-card">
+    <div class="formation-info">
+      <strong>BTS SNIR</strong>
+      <span class="lieu">Lyon (69008)</span>
+      <span class="annee">2021 — 2022</span>
+    </div>
+  </a>
+  <a href="https://www.adrar-formation.com/formation/technicien-superieur-systemes-et-reseaux/" target="_blank" class="card link-card">
+    <div class="formation-info">
+      <strong>BTS Systèmes & Réseaux</strong>
+      <span class="lieu">Tarbes (65000)</span>
+      <span class="annee">2022 — 2023</span>
+    </div>
+  </a>
+  <a href="https://www.uca.fr/formation/nos-formations/par-ufr-ecoles-et-iut/iut-clermont-auvergne/but/but-reseaux-et-telecommunications" target="_blank" class="card link-card">
+    <div class="formation-info">
+      <strong>BUT Réseaux & Télécom – Cybersécurité</strong>
+      <span class="lieu">Clermont-Ferrand (63000)</span>
+      <span class="annee">2024 — 2026</span>
+    </div>
+  </a>
 </section>
+
 <section id="experiences">
   <h2>Expériences Professionnelles</h2>
-
   <div class="experience-card">
     <h3>Administrateur Informatique – <span>Tellus</span></h3>
-    <p class="lieu">Saint-Germain-de-Salles (03140)</p>
-    <p class="date">Septembre 2024 – Aujourd’hui</p>
+    <span class="lieu">Saint-Germain-de-Salles (03140)</span>
+    <span class="date">Septembre 2024 – Aujourd’hui</span>
     <ul>
       <li>Support utilisateurs</li>
       <li>Gestion du parc imprimantes</li>
@@ -405,22 +262,20 @@
       <li>Configuration d'un serveur Zabbix</li>
     </ul>
   </div>
-
   <div class="experience-card">
     <h3>Technicien Informatique – <span>ConsortNT</span></h3>
-    <p class="lieu">Castres (81)</p>
-    <p class="date">Avril 2023 – Juillet 2024</p>
+    <span class="lieu">Castres (81)</span>
+    <span class="date">Avril 2023 – Juillet 2024</span>
     <ul>
-      <li>Supervision Informatique</li>
+      <li>Supervision informatique</li>
       <li>Traitement des backlogs et gestion des incidents</li>
       <li>Support utilisateurs et traitement des appels</li>
     </ul>
   </div>
-
   <div class="experience-card">
     <h3>Technicien Réseaux – <span>JM Sud Informatique</span></h3>
-    <p class="lieu">Bédarieux (34)</p>
-    <p class="date">Novembre 2022 – Janvier 2023</p>
+    <span class="lieu">Bédarieux (34)</span>
+    <span class="date">Novembre 2022 – Janvier 2023</span>
     <ul>
       <li>Mise en place de sauvegardes et de postes de travail</li>
       <li>Configuration d’applications de supervision</li>
@@ -429,129 +284,6 @@
   </div>
 </section>
 
-  <section id="hobbies">
-  <h2>Hobbies</h2>
-  <div class="hobby-container">
-    <div class="card hobby-card">
-      <h3>Développement</h3>
-      <p>Créer, expérimenter et progresser : j’adore développer des projets personnels pour enrichir mes connaissances en programmation.</p>
-    </div>
-    <div class="card hobby-card">
-      <h3>Sport</h3>
-      <p>J’ai pratiqué le tennis pendant douze ans, en compétition départementale et régionale, aussi bien en individuel qu’en équipe. En parallèle, j’ai eu l’opportunité d’encadrer et d’accompagner de jeunes joueurs dans leur progression. Aujourd’hui, je continue à entretenir cette passion pour le sport à travers le footing et la musculation.</p>
-    </div>
-    <div class="card hobby-card">
-      <h3>Lecture</h3>
-      <p>La lecture fait partie de mon quotidien, notamment autour de l’informatique, mais j’aime aussi découvrir d’autres domaines.</p>
-    </div>
-  </div>
-</section>
-
 <section>
-  <h2>Voir mon CV</h2>
-  <p><a href="CV.html" class="cv-link">Télécharger mon CV</a></p>
-</section>
-
-<section>
-  <h2>Contact</h2>
-  <p>Envoyez-moi un message : <a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a></p>
-  <p>Portable : 06.48.89.61.39</p>
-  <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank" class="card link-card">
-    <div class="formation-info">
-      <span>linkedin.com/in/ely-gomez-851b61210</span>
-    </div>
-  </a>
-</section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // --- Apparition des sections ---
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
-  }, { threshold: 0.2 });
-  sections.forEach(sec => observer.observe(sec));
-
-  // --- Fond 3D Futuriste ---
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    2000
-  );
-
-  const renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById('bg'),
-    alpha: true
-  });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-
-  // --- Étoiles ---
-  const geometry = new THREE.BufferGeometry();
-  const vertices = [];
-  for (let i = 0; i < 1500; i++) {
-    vertices.push((Math.random() - 0.5) * 2000);
-    vertices.push((Math.random() - 0.5) * 2000);
-    vertices.push((Math.random() - 0.5) * 2000);
-  }
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-  const material = new THREE.PointsMaterial({
-    color: 0x00ffff,
-    size: 2,
-    transparent: true,
-    opacity: 0.8
-  });
-  const stars = new THREE.Points(geometry, material);
-  scene.add(stars);
-
-  // --- Lignes lumineuses ---
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: 0x00ffff,
-    opacity: 0.05,
-    transparent: true,
-  });
-  for (let i = 0; i < 400; i++) {
-    const points = [];
-    points.push(
-      new THREE.Vector3(
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000
-      )
-    );
-    points.push(
-      new THREE.Vector3(
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000
-      )
-    );
-    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-    const line = new THREE.Line(lineGeo, lineMaterial);
-    scene.add(line);
-  }
-
-  // --- Position caméra & animation ---
-  camera.position.z = 400;
-  function animate() {
-    requestAnimationFrame(animate);
-    stars.rotation.x += 0.0008;
-    stars.rotation.y += 0.0008;
-    scene.rotation.y += 0.0001;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // --- Redimensionnement ---
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-</script>
-
+  <h2>CV</h2>
+  <p><a href="CV.html" class="card link-card">Télécharger mon
