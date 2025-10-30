@@ -172,20 +172,22 @@
   color: #00f0ff;
   text-shadow: 0 0 8px #00f0ff;
 }
-.cv-link-title {
+  
+/* Style pour le lien du CV */
+.cv-link {
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-shadow: 0 0 15px #00f0ff, 0 0 30px #00ffea;
   animation: neonPulse 1.8s infinite alternate;
   color: #00eaff;
-  margin: 0;
+  margin-top: 12px; /* ajoute un petit espace sous le titre */
   text-decoration: none;
 }
-.cv-link-title:hover {
+
+.cv-link:hover {
   text-decoration: underline;
 }
 
-</style>
 </head>
 <body>
 
@@ -377,11 +379,10 @@
   </div>
 </section>
 
-  <div class="cv-link-info">
-    <strong>Voir mon CV</strong>
-<a href="CV.html" class="cv-link-title">Voir mon CV</a>
-  </div>
-</a>
+<section>
+  <h2>Voir mon CV</h2>
+  <p><a href="CV.html" class="cv-link">Télécharger mon CV</a></p>
+</section>
 
 <section>
   <h2>Contact</h2>
