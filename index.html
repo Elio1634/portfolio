@@ -17,6 +17,25 @@
     color:white;
     overflow-x:hidden;
   }
+  {
+  .cv-link-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cv-link-info strong {
+  font-size: 1.2rem;
+  color: #00f0ff;
+  text-shadow: 0 0 8px #00f0ff;
+}
+
+.cv-link-info p {
+  font-size: 0.9rem;
+  color: #bffcff;
+  margin: 0;
+  opacity: 0.8;
+}
   canvas{
     position:fixed;
     top:0; left:0;
@@ -358,10 +377,18 @@
 </section>
 
   
-  <section>
+<!-- Section CV -->
+<section id="cv">
   <h2>CV</h2>
-  <p><a href="#">Télécharger mon CV</a></p>
+
+  <a href="https://elio1634.github.io/portfolio/CV_Ely_Gomez.pdf" target="_blank" class="card link-card">
+    <div class="cv-link-info">
+      <strong>Télécharger mon CV</strong>
+      <p>Version PDF – mise à jour 2025</p>
+    </div>
+  </a>
 </section>
+
 
 <section>
   <h2>Contact</h2>
