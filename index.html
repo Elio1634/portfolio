@@ -176,17 +176,100 @@
 </head>
 <body>
 
+<!-- Canvas pour le fond futuriste -->
 <canvas id="bg"></canvas>
 
-<header>
-  <h1>Ely Gomez</h1>
-  <p>Apprenti Technicien Cybersécurité</p>
-</header>
+<style>
+  /* Canvas derrière tout le contenu */
+  canvas#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: block;
+  }
+</style>
 
-<section>
-  <h2>Présentation</h2>
-  <p>Bienvenue dans mon univers numérique futuriste !</p>
-</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // ----- Initialisation scène -----
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    2000
+  );
+  const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('bg'),
+    alpha: true, // Fond transparent
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  // ----- Particules (étoiles) -----
+  const starGeometry = new THREE.BufferGeometry();
+  const starVertices = [];
+  for (let i = 0; i < 1500; i++) {
+    starVertices.push((Math.random() - 0.5) * 2000);
+    starVertices.push((Math.random() - 0.5) * 2000);
+    starVertices.push((Math.random() - 0.5) * 2000);
+  }
+  starGeometry.setAttribute(
+    'position',
+    new THREE.Float32BufferAttribute(starVertices, 3)
+  );
+  const starMaterial = new THREE.PointsMaterial({ color: 0x00ffff, size: 2 });
+  const stars = new THREE.Points(starGeometry, starMaterial);
+  scene.add(stars);
+
+  // ----- Lignes entre particules -----
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x00ffff,
+    opacity: 0.05,
+    transparent: true,
+  });
+  for (let i = 0; i < 500; i++) {
+    const points = [];
+    points.push(
+      new THREE.Vector3(
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000
+      )
+    );
+    points.push(
+      new THREE.Vector3(
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000
+      )
+    );
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(lineGeo, lineMaterial);
+    scene.add(line);
+  }
+
+  camera.position.z = 400;
+
+  // ----- Animation -----
+  function animate() {
+    requestAnimationFrame(animate);
+    stars.rotation.x += 0.0008;
+    stars.rotation.y += 0.0008;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // ----- Ajustement redimensionnement -----
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
+
 
 <section>
   <h2>Compétences</h2>
