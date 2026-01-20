@@ -1,98 +1,276 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio – Elio Gomez</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Ely Gomez</title>
 
   <!-- Police futuriste -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ----------------- Styles généraux ----------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #0a0f1d;
+      color: white;
+      overflow-x: hidden;
+    }
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 15px #00f0ff, 0 0 30px #00ffea;
+      animation: neonPulse 1.8s infinite alternate;
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-shadow: 0 0 10px #00eaff;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: #00f0ff;
+      text-shadow: 0 0 8px #00f0ff;
+      margin-bottom: 12px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    @keyframes neonPulse {
+      from {
+        text-shadow: 0 0 5px #00f0ff, 0 0 15px #00ffea;
+      }
+
+      to {
+        text-shadow: 0 0 25px #00ffea, 0 0 50px #00f0ff;
+      }
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.9s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      background: rgba(0, 255, 255, 0.07);
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      transition: transform .5s, box-shadow .5s;
+    }
+
+    .link-card:hover {
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+      transform: perspective(600px) rotateX(4deg) rotateY(-4deg) scale(1.05);
+      background: rgba(0, 255, 255, 0.08);
+    }
+
+    a {
+      color: #00eaff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ----------------- Langues ----------------- */
+    .lang-gauges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .lang-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gauge-card {
+      display: flex;
+      gap: 12px;
+      background: rgba(0, 255, 255, 0.03);
+      padding: 14px;
+      border-radius: 10px;
+    }
+
+    .gauge {
+      width: 96px;
+      height: 96px;
+    }
+
+    .gauge-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.06);
+      stroke-width: 12;
+    }
+
+    .gauge-fg {
+      fill: none;
+      stroke: #00eaff;
+      stroke-width: 12;
+      stroke-linecap: round;
+      transform: rotate(-90deg);
+      transform-origin: 60px 60px;
+    }
+
+    .gauge-value {
+      fill: #dfffff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* ----------------- Expériences / Formations ----------------- */
+    .experience-card span,
+    .formation-info span {
+      font-size: 0.85rem;
+      color: #bffcff;
+      display: block;
+    }
+
+    /* ----------------- Hobbies ----------------- */
+    .hobby-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .hobby-card {
+      flex: 1 1 200px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+  <canvas id="bg"></canvas>
 
-<header>
-  <h1>Elio Gomez</h1>
-  <p>Administrateur & Technicien Informatique</p>
-</header>
+  <header>
+    <h1>Ely Gomez</h1>
+    <p>Apprenti Technicien Cybersécurité</p>
+  </header>
 
-<section>
-  <h2>Projets</h2>
-  <div class="cards">
-    <a href="CV.html" class="card link-card">
-      <h3>Voir mon CV</h3>
-      <p>Version interactive holographique</p>
-    </a>
-  </div>
-</section>
+  <section>
+    <h2>Présentation</h2>
+    <p>...</p>
+  </section>
 
-<section>
-  <h2>Expériences Professionnelles</h2>
-  <div class="cards">
+  <section>
+    <h2>Compétences</h2>
+    <div class="card">HTML / CSS</div>
+    <div class="card">Wireshark</div>
+    <div class="card">GLPI</div>
+    <div class="card">Configuration matériels réseaux</div>
+  </section>
 
-    <div class="card">
+  <section id="experiences">
+    <h2>Expériences professionnelles</h2>
+
+    <div class="card experience-card">
       <h3>Administrateur Informatique – Tellus</h3>
-      <span class="meta">Saint-Germain-de-Salles • 2024 – Aujourd’hui</span>
-      <ul>
-        <li>Support utilisateurs</li>
-        <li>Administration serveurs</li>
-        <li>Supervision Zabbix</li>
-      </ul>
+      <span>Saint-Germain-de-Salles (03140)</span>
+      <span>Septembre 2024 – Aujourd’hui</span>
     </div>
 
-    <div class="card">
-      <h3>Technicien Informatique – Consort NT</h3>
-      <span class="meta">Castres • 2023 – 2024</span>
-      <ul>
-        <li>Supervision</li>
-        <li>Gestion incidents</li>
-        <li>Support utilisateurs</li>
-      </ul>
+    <div class="card experience-card">
+      <h3>Technicien Informatique – ConsortNT</h3>
+      <span>Castres (81)</span>
+      <span>Avril 2023 – Juillet 2024</span>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section>
-  <h2>Formations</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>BUT Réseaux & Télécom – Cybersécurité</h3>
-      <span class="meta">Clermont-Ferrand • 2024 – 2026</span>
+  <section id="hobbies">
+    <h2>Hobbies</h2>
+    <div class="hobby-container">
+      <div class="card hobby-card">
+        <h3>Développement</h3>
+        <p>Création de projets personnels et montée en compétences techniques.</p>
+      </div>
+      <div class="card hobby-card">
+        <h3>Sport</h3>
+        <p>Tennis, footing et musculation.</p>
+      </div>
+      <div class="card hobby-card">
+        <h3>Voyage</h3>
+        <p>8 pays visités à travers l’Europe.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <h2>Hobbies</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Voyage</h3>
-      <p>
-        Découverte de 8 pays : Angleterre, Écosse, Irlande, Autriche,
-        Croatie, Grèce, Espagne et Monténégro.
-      </p>
-    </div>
-  </div>
-</section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email : <a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a></p>
+    <p>Téléphone : 06 48 89 61 39</p>
+  </section>
 
-<section>
-  <h2>Contact</h2>
-  <div class="cards">
-    <div class="card">
-      <p>📧 elygomez340@gmail.com</p>
-      <p>📞 06 48 89 61 39</p>
-      <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-</section>
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-<script src="script.js"></script>
+    const geometry = new THREE.BufferGeometry();
+    const vertices = [];
+    for (let i = 0; i < 1500; i++) {
+      vertices.push((Math.random() - 0.5) * 2000);
+      vertices.push((Math.random() - 0.5) * 2000);
+      vertices.push((Math.random() - 0.5) * 2000);
+    }
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+    const stars = new THREE.Points(
+      geometry,
+      new THREE.PointsMaterial({ color: 0x00ffff, size: 2 })
+    );
+    scene.add(stars);
+
+    camera.position.z = 400;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      stars.rotation.x += 0.0008;
+      stars.rotation.y += 0.0008;
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+
 </body>
 </html>
