@@ -1,3 +1,129 @@
-<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Portfolio - Ely Gomez</title> <!-- Police futuriste --> <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> <style> /* ----------------- Styles généraux ----------------- */ body { margin:0; padding:0; font-family:'Orbitron',sans-serif; background:#0a0f1d; color:white; overflow-x:hidden; } canvas{ position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; } header{ text-align:center; padding:100px 20px; } h1{ font-size:3rem; text-shadow:0 0 15px #00f0ff, 0 0 30px #00ffea; animation: neonPulse 1.8s infinite alternate; } h2{ font-size:2rem; text-shadow:0 0 10px #00eaff; margin-bottom:20px; } h3{ color:#00f0ff; text-shadow:0 0 8px #00f0ff; margin-bottom:12px; } p{ line-height:1.6; } @keyframes neonPulse{ from {text-shadow:0 0 5px #00f0ff,0 0 15px #00ffea;} to {text-shadow:0 0 25px #00ffea,0 0 50px #00f0ff;} } section{ max-width:1000px; margin:80px auto; padding:40px; background:rgba(255,255,255,0.05); border-radius:12px; backdrop-filter:blur(6px); opacity:0; transform:translateY(50px); transition:all 0.9s ease; } section.show{ opacity:1; transform:translateY(0); } .card{ background: rgba(0,255,255,0.07); padding:20px; margin:15px 0; border-radius:8px; cursor:pointer; transition: transform .5s, box-shadow .5s; } .link-card:hover { box-shadow: 0 0 8px rgba(0, 255, 255, 0.4); transform: perspective(600px) rotateX(4deg) rotateY(-4deg) scale(1.05); background: rgba(0, 255, 255, 0.08); } a{ color:#00eaff; text-decoration:none; } a:hover{text-decoration:underline;} /* ----------------- Langues ----------------- */ .lang-gauges { display:flex; flex-wrap:wrap; gap:24px; justify-content:flex-start; margin-top:20px;} .lang-block { display:flex; flex-direction:column; gap:12px; min-width:200px; } .gauge-card { display:flex; gap:12px; align-items:center; background: rgba(0,255,255,0.03); padding:14px; border-radius:10px; min-width:240px; max-width:360px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02); } .gauge-item { text-align:center; } .gauge-label { font-size:0.85rem; margin-bottom:4px; color:#bffcff; } .gauge { width:96px;height:96px; flex:0 0 96px; display:block; margin:0 auto; } .gauge-bg { fill:none; stroke: rgba(255,255,255,0.06); stroke-width:12; } .gauge-fg { fill:none; stroke:#00eaff; stroke-width:12; stroke-linecap:round; transform-origin:60px 60px; transform: rotate(-90deg); transition: stroke-dashoffset 600ms cubic-bezier(.2,.9,.3,1), stroke 400ms ease; } .gauge-value { font-family:'Orbitron',sans-serif; font-size:18px; fill:#dfffff; font-weight:700; } /* ----------------- Expériences & Formations ----------------- */ .experience-card, .formation-info { margin-bottom:20px; } .experience-card h3, .formation-info strong { font-size:1.2rem; color:#00eaff; } .experience-card .lieu, .experience-card .date, .formation-info .lieu, .formation-info .annee { font-size:0.85rem; color:#bffcff; display:block; } /* ----------------- Hobbies ----------------- */ .hobbies { display:flex; flex-wrap:wrap; gap:20px; } .hobby-card { background: rgba(0,255,255,0.07); padding:16px; border-radius:8px; flex:1 1 180px; text-align:center; } @media (max-width:700px){ .lang-gauges { justify-content:center; } .gauge-card { width:100%; max-width:none; } } </style> </head> <body> <canvas id="bg"></canvas> <header> <h1>Ely Gomez</h1> <p>Apprenti Technicien Cybersécurité</p> </header> <section> <h2>Présentation</h2> <p> .... </p> </section> <section> <h2>Compétences</h2> <div class="card">HTML / CSS</div> <div class="card">Wireshark</div> <div class="card">GLPI</div> <div class="card">Configuration Matériels réseaux</div> </section> <section> <h2>Langues</h2> <div class="lang-gauges"> <!-- Anglais --> <div class="lang-block"> <h3>Anglais</h3> <div class="gauge-card"> <div class="gauge-item"> <p class="gauge-label">Écrit</p> <svg class="gauge" viewBox="0 0 120 120"> <circle class="gauge-bg" cx="60" cy="60" r="54"></circle> <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="169.65"></circle> <text class="gauge-value" x="60" y="66" text-anchor="middle">40%</text> </svg> </div> <div class="gauge-item"> <p class="gauge-label">Parlé</p> <svg class="gauge" viewBox="0 0 120 120"> <circle class="gauge-bg" cx="60" cy="60" r="54"></circle> <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="101.79"></circle> <text class="gauge-value" x="60" y="66" text-anchor="middle">40%</text> </svg> </div> <div class="gauge-item"> <p class="gauge-label">Compréhension</p> <svg class="gauge" viewBox="0 0 120 120"> <circle class="gauge-bg" cx="60" cy="60" r="54"></circle> <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="50.87"></circle> <text class="gauge-value" x="60" y="66" text-anchor="middle">85%</text> </svg> </div> </div> </div> <!-- Espagnol --> <div class="lang-block"> <h3>Espagnol</h3> <div class="gauge-card"> <div class="gauge-item"> <p class="gauge-label">Écrit</p> <svg class="gauge" viewBox="0 0 120 120"> <circle class="gauge-bg" cx="60" cy="60" r="54"></circle> <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="203.57"></circle> <text class="gauge-value" x="60" y="66" text-anchor="middle">40%</text> </svg> </div> <div class="gauge-item"> <p class="gauge-label">Parlé</p> <svg class="gauge" viewBox="0 0 120 120"> <circle class="gauge-bg" cx="60" cy="60" r="54"></circle> <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="169.65"></circle> <text class="gauge-value" x="60" y="66" text-anchor="middle">50%</text> </svg> </div> <div class="gauge-item"> <p class="gauge-label">Compréhension</p> <svg class="gauge" viewBox="0 0 120 120"> <circle class="gauge-bg" cx="60" cy="60" r="54"></circle> <circle class="gauge-fg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="135.72"></circle> <text class="gauge-value" x="60" y="66" text-anchor="middle">60%</text> </svg> </div> </div> </div> </div> </section> <section> <h2>Projets</h2> <div class="card">Projet 1 – Attaque et sécurisation d'une infrastructure 2025-2026</div> <div class="card">Projet 2 - Attaque et sécurisation d'une infrastructure 2024-2025</div> <div class="card">Projet 2 – Note Galaxie (planifié)</div> <div class="card">Projet 3 – Généologie des objets (sur du long terme)</div> <div class="card">Projet 4 - Dragon animé (en cours) </div> </section> <section> <h2>Formations</h2> <a href="https://www.uca.fr/formation/nos-formations/par-ufr-ecoles-et-iut/iut-clermont-auvergne/but/but-reseaux-et-telecommunications" target="_blank" class="card link-card"> <div class="formation-info"> <strong>BUT Réseaux & Télécom – Cybersécurité</strong> <span class="lieu">Clermont-Ferrand (63000)</span> <span class="annee">2024 — 2026</span> </div> </a> <a href="https://www.adrar-formation.com/formation/technicien-superieur-systemes-et-reseaux/" target="_blank" class="card link-card"> <div class="formation-info"> <strong>Diplôme Technicien Supérieur Systèmes & Réseaux</strong> <span class="lieu">Tarbes (65000)</span> <span class="annee">2022 — 2023</span> </div> </a> <a href="https://ort-france.fr/formation/bts-ciel-cybersecurite-informatique-et-reseaux-electronique/" target="_blank" class="card link-card"> <div class="formation-info"> <strong>BTS Systèmes Numériques option Informatique et Réseaux</strong> <span class="lieu">Lyon (69008)</span> <span class="annee">2021 — 2022</span> </div> </a> <a href="https://epl.montpellier-orb-herault.educagri.fr/lycee-la-condamine/enseignement" target="_blank" class="card link-card"> <div class="formation-info"> <strong>BAC Science et Technologie de l'Agronomie et du Vivant</strong> <span class="lieu">Pézenas (34120)</span> <span class="annee">2020 — 2021</span> </div> </a> </section> <a <a href="https://www.tellus.com/" target="_blank" class="card link-card"> <section id="experiences"> <h2>Expériences Professionnelles</h2> <div class="experience-card"> <h3>Administrateur Informatique – <span>Tellus</span></h3> <span class="lieu">Saint-Germain-de-Salles (03140)</span> <span class="date">Septembre 2024 – Aujourd’hui</span> <ul> <li>Support utilisateurs</li> <li>Gestion du parc imprimantes</li> <li>Administration et exploitation des serveurs</li> <li>Configuration d'un serveur Zabbix</li> </ul> </div> </a> <a <a href="https://www.tellus.com/" target="_blank" class="card link-card"> <div class="experience-card"> <h3>Technicien Informatique – <span>ConsortNT</span></h3> <span class="lieu">Castres (81)</span> <span class="date">Avril 2023 – Juillet 2024</span> <ul> <li>Supervision informatique</li> <li>Traitement des backlogs et gestion des incidents utilisateurs</li> <li>Support utilisateurs et traitement des appels utilisateurs</li> </ul> </div> </a> <div class="experience-card"> <h3>Technicien Réseaux – <span>JM Sud Informatique</span></h3> <span class="lieu">Bédarieux (34)</span> <span class="date">Novembre 2022 – Janvier 2023</span> <ul> <li>Mise en place de sauvegardes et de postes de travail</li> <li>Configuration d’applications de supervision</li> <li>Réparation et maintenance de matériel informatique</li> </ul> </div> </section> <section id="hobbies"> <h2>Hobbies</h2> <div class="hobby-container"> <div class="card hobby-card"> <h3>Développement</h3> <p>Concevoir des projets personnels est un vrai plaisir, une manière d’expérimenter et de faire grandir mes compétences en programmation.</p> </div> <div class="card hobby-card"> <h3>Sport</h3> <p>Le tennis a rythmé 12 années de ma vie, en compétition départementale et régionale, en solo ou en équipe, tout en encadrant de jeunes joueurs. Aujourd’hui, je continue de garder la forme avec le footing et la musculation.</p> </div> <div class="card hobby-card"> <h3>Lecture</h3> <p>Toujours curieux, je plonge chaque jour dans des revues informatiques ou d’autres lectures passionnantes pour apprendre et m’évader.</p> </div> <div class="card hobby-card"> <h3>Voyage</h3> <p>Découvrir de nouveaux horizons et cultures m’inspire et nourrit ma créativité. À ce jour, j'ai déjà pu visiter 8 pays : Angleterre, Écosse, Irlande, Autriche, Croatie, Grèce, Espagne et Monténégro.</p> </div> </div> </section> <section> <h2>CV</h2> <p> <a href="CV.html" class="card link-card" target="_blank"> Télécharger mon CV </a> </p> </section> <section id="contact"> <h2>Contact</h2> <p>Envoyez-moi un message : <a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a></p> <p>Portable : 06.48.89.61.39</p> <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank" class="card link-card"> <div class="formation-info"> <span>linkedin.com/in/ely-gomez-851b61210</span> </div> </a> </section> </section> <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> <script> // Fade-in des sections const sections = document.querySelectorAll('section'); const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('show'); }); }, {threshold:0.2}); sections.forEach(sec => observer.observe(sec)); // Fond animé 3D futuriste const scene = new THREE.Scene(); const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 2000); const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('bg'), alpha:true}); renderer.setSize(window.innerWidth, window.innerHeight); const geometry = new THREE.BufferGeometry(); const vertices = []; for(let i=0; i<1500; i++){ vertices.push((Math.random()-0.5)*2000); vertices.push((Math.random()-0.5)*2000); vertices.push((Math.random()-0.5)*2000); } geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3)); const material = new THREE.PointsMaterial({color:0x00ffff, size:2}); const stars = new THREE.Points(geometry, material); scene.add(stars); const lineMaterial = new THREE.LineBasicMaterial({color:0x00ffff, opacity:0.05, transparent:true}); for(let i=0; i<500; i++){ const points = []; points.push(new THREE.Vector3((Math.random()-0.5)*2000, (Math.random()-0.5)*2000, (Math.random()-0.5)*2000)); points.push(new THREE.Vector3((Math.random()-0.5)*2000, (Math.random()-0.5)*2000, (Math.random()-0.5)*2000)); const lineGeo = new THREE.BufferGeometry().setFromPoints(points); const line = new THREE.Line(lineGeo, lineMaterial); scene.add(line); } camera.position.z = 400; function animate(){ requestAnimationFrame(animate); stars.rotation.x += 0.0008; stars.rotation.y += 0.0008; renderer.render(scene, camera); } animate(); // Ajustement sur redimensionnement window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }); </script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio – Elio Gomez</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="style.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>Elio Gomez</h1>
+  <p>Administrateur & Technicien Informatique</p>
+</header>
+
+<section>
+  <h2>Projets</h2>
+  <div class="cards">
+    <a href="CV.html" class="card link-card">
+      <h3>Voir mon CV</h3>
+      <p>Version interactive holographique</p>
+    </a>
+  </div>
+</section>
+
+<section>
+  <h2>Expériences Professionnelles</h2>
+  <div class="cards">
+
+    <div class="card">
+      <h3>Administrateur Informatique – Tellus</h3>
+      <span class="meta">Saint-Germain-de-Salles (03) • Septembre 2024 – Aujourd’hui</span>
+      <ul>
+        <li>Support utilisateurs</li>
+        <li>Gestion du parc imprimantes</li>
+        <li>Administration serveurs</li>
+        <li>Mise en place d’une supervision (Zabbix)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Technicien Informatique – Consort NT</h3>
+      <span class="meta">Castres (81) • Avril 2023 – Juillet 2024</span>
+      <ul>
+        <li>Supervision systèmes</li>
+        <li>Gestion des tickets et backlogs</li>
+        <li>Support téléphonique</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Technicien Réseaux – JM Sud Informatique</h3>
+      <span class="meta">Hérault (34) • Nov. 2022 – Janv. 2023</span>
+      <ul>
+        <li>Mise en place de sauvegardes</li>
+        <li>Déploiement postes utilisateurs</li>
+        <li>Maintenance et dépannage matériel</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Formations</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>BTS SIO – Option SISR</h3>
+      <span class="meta">Castres • 2021 – 2023</span>
+      <p>Systèmes, réseaux, sécurité et administration</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Hobbies</h2>
+  <div class="cards">
+
+    <div class="card">
+      <h3>Sport</h3>
+      <p>
+        Douze années de tennis en compétitions départementales et régionales,
+        en équipe comme en individuel, avec encadrement de jeunes joueurs.
+        Aujourd’hui, pratique régulière du footing et de la musculation.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Lecture & Technologie</h3>
+      <p>
+        Veille constante à travers des revues informatiques et contenus techniques
+        afin de rester à jour sur les évolutions du numérique.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Voyage</h3>
+      <p>
+        Découverte de huit pays : Angleterre, Écosse, Irlande, Autriche,
+        Croatie, Grèce, Espagne et Monténégro, développant ouverture
+        culturelle et adaptabilité.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <div class="cards">
+    <div class="card">
+      <p>📧 elio.gomez@email.com</p>
+      <p>📞 06 00 00 00 00</p>
+      <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank">
+        🔗 LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
