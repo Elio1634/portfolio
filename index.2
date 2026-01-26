@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Futuriste</title>
+
+    <!-- Import police futuriste -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Import Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: #0a0f1d;
+            color: white;
+            overflow-x: hidden;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+        header {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 15px #00f0ff;
+            animation: neonPulse 2s infinite alternate;
+        }
+        @keyframes neonPulse {
+            from { text-shadow: 0 0 5px #00f0ff; }
+            to { text-shadow: 0 0 25px #00e6b8; }
+        }
+        section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s ease;
+        }
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background: rgba(0,255,255,0.07);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform .5s;
+        }
+        .card:hover {
+            transform: perspective(600px) rotateX(6deg) rotateY(-6deg) scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg"></canvas>
+
+    <header>
+        <h1>Mon Portfolio Futuriste</h1>
+        <p>Développeur – Informatique – Innovation</p>
+    </header>
+
+    <section>
+        <h2>Présentation</h2>
+        <p>Bienvenue dans mon univers numérique futuriste !</p>
+    </section>
+
+    <section>
+        <h2>Compétences</h2>
+        <div class="card">HTML / CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">Python</div>
+    </section>
+
+    <section>
+        <h2>Projets</h2>
+        <div class="card">Projet 1 – Interface 3D</div>
+        <div class="card">Projet 2 – Application Web</div>
+    </section>
+
+    <section>
+        <h2>Formations</h2>
+        <p>Bientôt rempli</p>
+    </section>
+
+    <section>
+        <h2>Expériences</h2>
+        <p>Bientôt rempli</p>
+    </section>
+
+    <section>
+        <h2>CV</h2>
+        <p><a href="#" style="color:#00eaff;">Télécharger mon CV</a></p>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>Envoyez-moi un message 📩 : <a style="color:#00eaff;" href="mailto:email@exemple.com">email@exemple.com</a></p>
+    </section>
+
+    <script>
+        // ✅ Animation apparition des sections au scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, { threshold: 0.2 });
+        sections.forEach(sec => observer.observe(sec));
+
+        // ✅ Fond animé avec Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        for (let i = 0; i < 1000; i++) {
+            vertices.push((Math.random() - 0.5) * 2000);
+            vertices.push((Math.random() - 0.5) * 2000);
+            vertices.push((Math.random() - 0.5) * 2000);
+        }
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        const material = new THREE.PointsMaterial({ color: 0x00ffff, size: 2 });
+        const stars = new THREE.Points(geometry, material);
+        scene.add(stars);
+
+        camera.position.z = 400;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            stars.rotation.x += 0.0006;
+            stars.rotation.y += 0.0006;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+
+</body>
+</html>
