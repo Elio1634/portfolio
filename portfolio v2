@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- Import police futuriste -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Import Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: #0a0f1d;
+            color: white;
+            overflow-x: hidden;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+        header {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 15px #00f0ff;
+            animation: neonPulse 2s infinite alternate;
+        }
+        @keyframes neonPulse {
+            from { text-shadow: 0 0 5px #00f0ff; }
+            to { text-shadow: 0 0 25px #00e6b8; }
+        }
+        section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s ease;
+        }
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background: rgba(0,255,255,0.07);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform .5s;
+        }
+        .card:hover {
+            transform: perspective(600px) rotateX(6deg) rotateY(-6deg) scale(1.03);
+        }
+
+        /* 🔵 Bouton langue */
+        #lang-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #00eaff;
+            color: #000;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            z-index: 10;
+            transition: 0.2s;
+        }
+        #lang-btn:hover {
+            background: #00bcd4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔵 Bouton langue -->
+    <button id="lang-btn">EN</button>
+
+    <canvas id="bg"></canvas>
+
+    <header>
+        <h1 data-i18n="name">ELY GOMEZ</h1>
+        <p data-i18n="infos">23 ans • Permis B • Véhicule personnel • Gannat (03800)</p>
+    </header>
+
+    <section>
+        <h2 data-i18n="presentation_title">Présentation</h2>
+        <p data-i18n="presentation_text">
+            Apprenti technicien en cybersécurité passionné par les technologies réseau, la sécurité informatique et le développement. Toujours en quête de nouveaux défis pour enrichir mes compétences techniques et renforcer mes connaissances dans le domaine de la cybersécurité.
+        </p>
+    </section>
+
+    <section>
+        <h2 data-i18n="exp_title">Expériences</h2>
+        <div class="card">
+            <h3 data-i18n="exp1_title">Alternant Administrateur Informatique</h3>
+            <p class="exp-meta">
+                <a href="https://www.tellus.com/" target="_blank">Lien</a> • 03140 Saint-Germain-de-Salle • 2024-2026
+            </p>
+            <ul>
+                <li data-i18n="exp1_1">Support utilisateurs</li>
+                <li data-i18n="exp1_2">Gestion du parc imprimantes</li>
+                <li data-i18n="exp1_3">Administration et exploitation de serveurs</li>
+                <li data-i18n="exp1_4">Installation et configuration d’un serveur Zabbix</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- (Je n’ai pas traduit tout le reste pour ne pas te surcharger, mais le système fonctionne déjà.
+         Tu pourras ajouter d’autres textes dans l’objet "translations" si tu veux.) -->
+
+    <script>
+        // 🌍 Dictionnaire de traduction
+        const translations = {
+            fr: {
+                name: "ELY GOMEZ",
+                infos: "23 ans • Permis B • Véhicule personnel • Gannat (03800)",
+                presentation_title: "Présentation",
+                presentation_text: "Apprenti technicien en cybersécurité passionné par les technologies réseau, la sécurité informatique et le développement. Toujours en quête de nouveaux défis pour enrichir mes compétences techniques et renforcer mes connaissances dans le domaine de la cybersécurité.",
+                exp_title: "Expériences",
+                exp1_title: "Alternant Administrateur Informatique",
+                exp1_1: "Support utilisateurs",
+                exp1_2: "Gestion du parc imprimantes",
+                exp1_3: "Administration et exploitation de serveurs",
+                exp1_4: "Installation et configuration d’un serveur Zabbix"
+            },
+            en: {
+                name: "ELY GOMEZ",
+                infos: "23 years old • Driving license • Personal vehicle • Gannat (03800)",
+                presentation_title: "About Me",
+                presentation_text: "Cybersecurity apprentice passionate about networking, IT security and development. Always looking for new challenges to improve my technical skills and deepen my knowledge in cybersecurity.",
+                exp_title: "Experience",
+                exp1_title: "IT Administrator Apprentice",
+                exp1_1: "User support",
+                exp1_2: "Printer fleet management",
+                exp1_3: "Server administration and operation",
+                exp1_4: "Installation and configuration of a Zabbix server"
+            }
+        };
+
+        let currentLang = "fr";
+
+        document.getElementById("lang-btn").addEventListener("click", () => {
+            currentLang = currentLang === "fr" ? "en" : "fr";
+            document.getElementById("lang-btn").textContent = currentLang === "fr" ? "EN" : "FR";
+
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                el.textContent = translations[currentLang][key];
+            });
+        });
+
+        // Animation apparition sections
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, { threshold: 0.2 });
+        sections.forEach(sec => observer.observe(sec));
+    </script>
+
+</body>
+</html>
