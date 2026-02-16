@@ -85,56 +85,9 @@
         .card:hover {
             transform: perspective(600px) rotateX(6deg) rotateY(-6deg) scale(1.03);
         }
-        /* 🔵 Bouton langue */
-        #lang-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #00eaff;
-            color: #000;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            z-index: 10;
-            transition: 0.2s;
-        }
-        #lang-btn:hover {
-            background: #00bcd4;
-        }
+
     </style>
 </head>
-<script>
-const translations = {
-    fr: {
-        title: "Bienvenue sur mon portfolio",
-        about: "À propos de moi",
-        projects: "Mes projets",
-        contact: "Contact"
-    },
-    en: {
-        title: "Welcome to my portfolio",
-        about: "About me",
-        projects: "My projects",
-        contact: "Contact"
-    }
-};
-
-let currentLang = "fr";
-
-document.getElementById("lang-toggle").addEventListener("click", () => {
-    currentLang = currentLang === "fr" ? "en" : "fr";
-    document.getElementById("lang-toggle").textContent = currentLang === "fr" ? "EN" : "FR";
-
-    document.querySelector("[data-i18n='title']").textContent = translations[currentLang].title;
-    document.querySelector("[data-i18n='about']").textContent = translations[currentLang].about;
-    document.querySelector("[data-i18n='projects']").textContent = translations[currentLang].projects;
-    document.querySelector("[data-i18n='contact']").textContent = translations[currentLang].contact;
-});
-</script>
-
 <body>
     <button id="lang-toggle" class="lang-btn">EN</button>
 
@@ -150,8 +103,7 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
     <section>
         <h2>Présentation</h2>
         <p>Apprenti technicien en cybersécurité passionné par les technologies réseau, la sécurité informatique et le développement. Toujours en quête de nouveaux défis pour enrichir mes compétences techniques et renforcer mes connaissances dans le domaine de la cybersécurité.</p>
-        <h2 data-i18n="presentation_title">Apprenti technicien en cybersécurité passionné par les technologies réseau, la sécurité informatique et le développement. Toujours en quête de nouveaux défis pour enrichir mes compétences techniques et renforcer mes connaissances dans le domaine de la cybersécurité.</h2>
-
+       
     </section>
     <section>
     <h2>Expériences</h2>
