@@ -92,7 +92,7 @@
 <body>
 
     <!-- 🔵 Bouton langue -->
-    <button id="lang-btn">EN</button>
+    <button id="lang-btn">FR</button>
 
     <canvas id="bg"></canvas>
 
