@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Orbitron', sans-serif;
-            background: #0a0f1d;
+            background: #000000;
             color: white;
             overflow-x: hidden;
         }
@@ -230,6 +230,7 @@
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
 
         const geometry = new THREE.BufferGeometry();
         const vertices = [];
