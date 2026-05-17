@@ -3,231 +3,476 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV - Ely Gomez</title>
-
-<!-- Style holographique -->
+<title>CV – Ely Gomez</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --accent: #2E6B9E;
+    --accent-dark: #1A4A72;
+    --accent-light: #E8F1F9;
+    --sidebar-bg: #1E3A52;
+    --sidebar-text: #D4E6F1;
+    --text-dark: #1A2332;
+    --text-mid: #3D5166;
+    --text-light: #6B8299;
+    --white: #FFFFFF;
+    --section-line: #C5D8EA;
+    --tag-bg: #D4E8F5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at center, #0a1226 0%, #020614 80%);
-    color: #e9f6ff;
-    overflow-x: hidden;
+    font-family: 'Source Sans 3', sans-serif;
+    background: #EBF1F7;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 16px;
   }
 
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  .cv-wrapper {
+    width: 794px;
+    background: var(--white);
+    box-shadow: 0 8px 40px rgba(30,58,82,0.18);
+    display: flex;
+    min-height: 1123px;
   }
 
-  header {
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-top {
+    background: var(--accent-dark);
+    padding: 28px 20px 22px;
     text-align: center;
-    padding: 60px 20px 40px;
+    border-bottom: 3px solid var(--accent);
   }
 
-  h1 {
-    font-size: 3em;
-    color: #a8e8ff;
-    text-shadow: 0 0 20px rgba(0,255,255,0.5);
+  .avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #fff;
+    border: 3px solid rgba(255,255,255,0.25);
+    letter-spacing: 1px;
   }
 
-  h2 {
-    font-size: 1.8em;
-    border-bottom: 2px solid rgba(0,255,255,0.4);
+  .sidebar-info {
+    padding: 18px 20px 0;
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+
+  .sidebar-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+    color: #C0D9EC;
+  }
+
+  .sidebar-info p span.icon {
+    font-size: 13px;
+    margin-top: 2px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .tag-permis {
     display: inline-block;
-    margin-bottom: 10px;
+    background: rgba(46,107,158,0.35);
+    color: #B8D8F0;
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 14px;
+  }
+
+  .sidebar-section {
+    padding: 18px 20px 0;
+  }
+
+  .sidebar-section-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid rgba(46,107,158,0.4);
     padding-bottom: 6px;
-    color: #b9eaff;
+    margin-bottom: 12px;
   }
 
-  section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,255,255,0.08);
-    backdrop-filter: blur(8px);
+  .skill-item {
+    font-size: 12.5px;
+    color: #C0D9EC;
+    padding: 4px 0 4px 10px;
+    border-left: 2px solid var(--accent);
+    margin-bottom: 6px;
+    line-height: 1.4;
   }
 
-  h3 {
-    color: #90e0ff;
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 8px;
   }
 
-  ul {
-    margin-top: 6px;
-    line-height: 1.6em;
+  .lang-name {
+    font-size: 12.5px;
+    color: #C0D9EC;
   }
 
-  p, li, a {
-    font-size: 1em;
-    color: #e4f9ff;
+  .lang-level {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(46,107,158,0.25);
+    padding: 2px 7px;
+    border-radius: 10px;
   }
 
-  a {
-    color: #6fe8ff;
-    text-decoration: none;
+  .loisir-item {
+    font-size: 12.5px;
+    color: #C0D9EC;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
   }
 
-  a:hover {
-    text-decoration: underline;
+  .loisir-item::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
   }
 
-  .info {
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    padding: 36px 34px 36px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .header-name h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  .header-name h1 span {
+    font-weight: 800;
+    color: var(--accent-dark);
+  }
+
+  .header-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    margin-top: 4px;
+  }
+
+  .header-intro {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 24px;
+  }
+
+  .header-intro strong {
+    color: var(--accent-dark);
+    font-weight: 700;
+  }
+
+  .section {
+    margin-bottom: 22px;
+  }
+
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--accent);
+    padding: 6px 14px;
+    display: inline-block;
+    border-radius: 0 16px 16px 0;
+    margin-bottom: 16px;
+    margin-left: -30px;
+  }
+
+  .exp-item {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--section-line);
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 2px;
+  }
+
+  .exp-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-dark);
+  }
+
+  .exp-date {
+    font-size: 11px;
+    color: var(--white);
+    background: var(--accent);
+    padding: 2px 9px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .exp-company {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .exp-desc {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .form-item {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--section-line);
+    display: flex;
+    gap: 12px;
+  }
+
+  .form-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .form-year {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid var(--section-line);
+    border-radius: 6px;
+    padding: 4px 8px;
     text-align: center;
-    font-size: 1.1em;
-    color: #9de2ff;
+    white-space: nowrap;
+    line-height: 1.4;
+    align-self: flex-start;
+    margin-top: 2px;
   }
 
-  /* Lignes holographiques animées */
-  @keyframes floatLine {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-10px);}
-    100% {transform: translateY(0);}
+  .form-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--text-dark);
+    margin-bottom: 3px;
   }
 
-  .divider {
-    width: 80%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00ffff, transparent);
-    margin: 40px auto;
-    animation: floatLine 3s ease-in-out infinite;
+  .form-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.55;
   }
 </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
+<div class="cv-wrapper">
 
-<header>
-  <h1>CV - Ely Gomez</h1>
-  <p class="info">23 ans • Permis B • Véhicule personnel • Gannat (03800)</p>
-  <p class="info"><a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a> • 06.48.89.61.39 • <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank">LinkedIn</a></p>
-</header>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="avatar-placeholder">EG</div>
+      <div class="tag-permis">23 ans · Permis B/A1 · Véhiculé</div>
+    </div>
 
-<div class="divider"></div>
+    <div class="sidebar-info">
+      <p><span class="icon">📞</span> 06.48.89.61.39</p>
+      <p><span class="icon">✉</span> elygomez340@gmail.com</p>
+      <p><span class="icon">📍</span> Gannat, France</p>
+    </div>
 
-<section>
-  <h2>Présentation</h2>
-  <p>Apprenti technicien en cybersécurité passionné par les technologies réseau, la sécurité informatique et le développement. Toujours en quête de nouveaux défis pour enrichir mes compétences techniques et renforcer mes connaissances dans le domaine de la cybersécurité.</p>
-</section>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Compétences</div>
+      <div class="skill-item">GLPI / My Services</div>
+      <div class="skill-item">Splunk</div>
+      <div class="skill-item">Zabbix</div>
+      <div class="skill-item">Office 365</div>
+      <div class="skill-item">Configuration matériels réseaux (Switch, NAS, Routeur)</div>
+    </div>
 
-<section>
-  <h2>Compétences</h2>
-  <ul>
-    <li>HTML / CSS</li>
-    <li>Splunk</li>
-    <li>Wireshark</li>
-    <li>GLPI</li>
-    <li>Configuration et maintenance de matériels réseaux</li>
-  </ul>
-</section>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Langues</div>
+      <div class="lang-item">
+        <span class="lang-name">Anglais</span>
+        <span class="lang-level">A2</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Espagnol</span>
+        <span class="lang-level">A1</span>
+      </div>
+    </div>
 
-<section>
-  <h2>Langues</h2>
-  <ul>
-    <li><strong>Anglais :</strong> Écrit 50% • Parlé 70% • Compréhension 85%</li>
-    <li><strong>Espagnol :</strong> Écrit 40% • Parlé 50% • Compréhension 60%</li>
-  </ul>
-</section>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Loisirs</div>
+      <div class="loisir-item">Sport (Tennis, Musculation)</div>
+      <div class="loisir-item">Voyages (Suède, Irlande…)</div>
+      <div class="loisir-item">Lecture</div>
+    </div>
+  </div>
 
-<section>
-  <h2>Formations</h2>
-  <ul>
-    <li><strong>BUT Réseaux & Télécom – Cybersécurité</strong> – Clermont-Ferrand (2024 – 2026)</li>
-    <li><strong>Technicien Supérieur Systèmes et Réseaux</strong> – Tarbes (2022 – 2023)</li>
-    <li><strong>BTS SNIR</strong> – Lyon (2021 – 2022)</li>
-    <li><strong>BAC Sciences et Technologies de l’Agronomie et du Vivant</strong> – Pézenas (2020 – 2021)</li>
-  </ul>
-</section>
+  <!-- MAIN -->
+  <div class="main">
 
-<section>
-  <h2>Expériences Professionnelles</h2>
+    <div class="header-name">
+      <h1>Ely <span>GOMEZ</span></h1>
+    </div>
+    <div class="header-title">Administrateur Système et Réseaux</div>
 
-  <h3>Administrateur Informatique – Tellus</h3>
-  <p><em>Saint-Germain-de-Salles (03140) | Septembre 2024 – Aujourd’hui</em></p>
-  <ul>
-    <li>Support utilisateurs</li>
-    <li>Gestion du parc imprimantes</li>
-    <li>Administration et exploitation des serveurs</li>
-    <li>Configuration d’un serveur Zabbix</li>
-  </ul>
+    <div class="header-intro">
+      Souhaitant poursuivre mon parcours dans la région, je serai disponible à partir du
+      <strong>4 septembre 2026</strong>. Très motivé, je suis prêt à m'investir pleinement
+      dans les missions qui me seront confiées.
+    </div>
 
-  <h3>Technicien Informatique – ConsortNT</h3>
-  <p><em>Castres (81) | Avril 2023 – Juillet 2024</em></p>
-  <ul>
-    <li>Supervision informatique</li>
-    <li>Traitement des backlogs et incidents</li>
-    <li>Support utilisateurs et gestion des appels</li>
-  </ul>
+    <!-- EXPÉRIENCE -->
+    <div class="section">
+      <div class="section-title">Expérience Professionnelle</div>
 
-  <h3>Technicien Réseaux – JM Sud Informatique</h3>
-  <p><em>Bédarieux (34) | Novembre 2022 – Janvier 2023</em></p>
-  <ul>
-    <li>Mise en place de sauvegardes et de postes de travail</li>
-    <li>Configuration d’applications de supervision</li>
-    <li>Maintenance et réparation de matériel informatique</li>
-  </ul>
-</section>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Alternant Administrateur Informatique</div>
+          <div class="exp-date">Sept. 2024 – Aujourd'hui</div>
+        </div>
+        <div class="exp-company">Tellus, Saint-Germain-de-Salles (03)</div>
+        <div class="exp-desc">
+          Support utilisateurs N1 + N2, Gestion du parc imprimante et matériels,
+          Gestion Serveurs exploitation, Mise en place solution de supervision Zabbix,
+          Gestion exploitation (AS400, GED, RADAR), Gestion AD.
+        </div>
+      </div>
 
-<section>
-  <h2>Hobbies</h2>
-  <ul>
-    <li><strong>Lecture :</strong> Lecture quotidienne, revues informatiques et ouvrages techniques.</li>
-    <li><strong>Sport :</strong> 12 ans de tennis en compétition départementale et régionale (équipe et solo), encadrement de jeunes joueurs. Aujourd’hui : footing et musculation réguliers.</li>
-    <li><strong>Développement :</strong> Conception de projets personnels pour améliorer mes compétences en programmation.</li>
-    <li><strong>Cinéma et séries :</strong> Passionné de science-fiction, de thrillers psychologique et d’univers futuristes.</li>
-  </ul>
-</section>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Technicien Informatique</div>
+          <div class="exp-date">Avr. 2023 – Juil. 2024</div>
+        </div>
+        <div class="exp-company">ConsortNT, Castres (81)</div>
+        <div class="exp-desc">
+          Supervision du matériels réseaux, Traitement du backlog et appel N1.
+        </div>
+      </div>
 
-<div class="divider"></div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Stagiaire Technicien Réseaux</div>
+          <div class="exp-date">Nov. 2022 – Jan. 2023</div>
+        </div>
+        <div class="exp-company">JM Sud Informatique, Bédarieux (34)</div>
+        <div class="exp-desc">
+          Réparation matériels informatique, Mise en place sauvegardes des données,
+          Configuration postes de travail.
+        </div>
+      </div>
+    </div>
 
-<section>
-  <h2>Contact</h2>
-  <p>📧 <a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a></p>
-  <p>📞 06.48.89.61.39</p>
-  <p>🔗 <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank">LinkedIn - Ely Gomez</a></p>
-</section>
+    <!-- FORMATION -->
+    <div class="section">
+      <div class="section-title">Formation</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // Fond holographique bleu clair
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
+      <div class="form-item">
+        <div class="form-year">2024<br>2026</div>
+        <div class="form-content">
+          <div class="form-title">Bachelor Réseaux et Télécom option Cybersécurité</div>
+          <div class="form-desc">
+            Téléphonie IP, Pentest, Supervision des réseaux, Configuration Borne Wi-Fi,
+            Analyse de risques, Cloud, Audits de sécurité (Attaque et Défense), SSO, Python.
+          </div>
+        </div>
+      </div>
 
-  const geometry = new THREE.BufferGeometry();
-  const vertices = [];
-  for (let i = 0; i < 1500; i++) {
-    vertices.push((Math.random() - 0.5) * 2000);
-    vertices.push((Math.random() - 0.5) * 2000);
-    vertices.push((Math.random() - 0.5) * 2000);
-  }
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-  const material = new THREE.PointsMaterial({ color: 0x66ffff, size: 2, transparent: true, opacity: 0.7 });
-  const stars = new THREE.Points(geometry, material);
-  scene.add(stars);
+      <div class="form-item">
+        <div class="form-year">2023<br>2024</div>
+        <div class="form-content">
+          <div class="form-title">Technicien Supérieur Système et Réseaux</div>
+          <div class="form-desc">
+            AD Windows, Linux, Wireshark, Adressage IP, Docker Linux.
+          </div>
+        </div>
+      </div>
 
-  camera.position.z = 400;
+      <div class="form-item">
+        <div class="form-year">2022<br>2023</div>
+        <div class="form-content">
+          <div class="form-title">BTS – Système Numérique option Système et Réseaux <em style="font-weight:400;font-style:normal;font-size:11.5px;color:#6B8299;">(6 mois)</em></div>
+          <div class="form-desc">
+            Pentest, Code C++, HTML / CSS.
+          </div>
+        </div>
+      </div>
+    </div>
 
-  function animate() {
-    requestAnimationFrame(animate);
-    stars.rotation.x += 0.0007;
-    stars.rotation.y += 0.0009;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-</script>
+  </div>
+</div>
 
 </body>
 </html>
