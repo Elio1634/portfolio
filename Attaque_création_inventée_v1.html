@@ -4,56 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attaque Création Inventée v1</title>
-  <style>
-    /* 🌌 Fond identique à ton portfolio principal */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      text-align: center;
-    }
-
-    h1, h2, h3 {
-      color: #00bcd4;
-    }
-
-    a {
-      color: #00bcd4;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <section>
+  <div id="particles-js"></div>
+
+  <section class="content">
     <h1>Création d'une cyberattaque</h1>
-    <h2>Présentation</h2>
-    <p>Dans le cadre de ma formation, nous avons dû créer, présenter et réaliser un scénario d’attaque...</p>
-
-    <h2>Plan d’adressage</h2>
-    <img src="Plan_adressage.PNG" alt="Plan d’adressage du réseau">
-
-    <h2>Schéma du réseau</h2>
-    <img src="Schéma_Attaque_v1.PNG" alt="Schéma du réseau avec pare-feu et serveurs">
-
-    <h2>Compétences</h2>
-    <ul>
-      <li>Firewall Stormshield</li>
-      <li>Configuration AD, DNS, DHCP, Serveurs, Postes de travail</li>
-      <li>Linux</li>
-      <li>Splunk</li>
-      <li>Création de scripts .bat</li>
-    </ul>
+    <p>Présentation du scénario d’attaque et du réseau simulé.</p>
+    <img src="schema_reseau.png" alt="Schéma du réseau">
   </section>
+
+  <script src="background.js"></script>
 </body>
 </html>
