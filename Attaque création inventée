@@ -1,1 +1,284 @@
-à faire
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Projet</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0f172a;
+      color:#f1f5f9;
+      font-family:Arial, sans-serif;
+      line-height:1.6;
+    }
+
+    a{
+      color:#38bdf8;
+      text-decoration:none;
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      color:white;
+    }
+
+    header p{
+      font-size:1.3rem;
+      color:#94a3b8;
+      max-width:700px;
+      margin:auto;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:30px;
+      padding:14px 28px;
+      border-radius:10px;
+      background:#38bdf8;
+      color:#0f172a;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      background:#7dd3fc;
+    }
+
+    /* NAV */
+
+    nav{
+      position:sticky;
+      top:0;
+      background:#0f172add;
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    nav .container{
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      padding:20px;
+    }
+
+    nav a{
+      color:white;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#38bdf8;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:100px 0;
+    }
+
+    h2{
+      font-size:2.5rem;
+      margin-bottom:40px;
+      color:white;
+    }
+
+    .card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:16px;
+      margin-bottom:25px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#38bdf8;
+    }
+
+    .card h3{
+      margin-bottom:10px;
+      color:#38bdf8;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+    }
+
+    .skill{
+      background:#1e293b;
+      padding:12px 20px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    footer{
+      padding:40px;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#94a3b8;
+    }
+
+    @media(max-width:768px){
+
+      header h1{
+        font-size:2.5rem;
+      }
+
+      h2{
+        font-size:2rem;
+      }
+
+      nav .container{
+        flex-wrap:wrap;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="#about">Présentation</a>
+      <a href="#projects">Projets</a>
+      <a href="#skills">Compétences</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <div>
+      <h1>TON NOM</h1>
+
+      <p>
+        Développeur / Technicien / Étudiant passionné par la cybersécurité,
+        le développement et les nouvelles technologies.
+      </p>
+
+      <a href="#projects" class="btn">Voir mes projets</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+
+      <h2>📌 Présentation</h2>
+
+      <div class="card">
+        <p>
+          Présente-toi ici. Explique ton parcours, tes objectifs,
+          ce que tu recherches et ce qui te passionne dans l’informatique.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+
+      <h2>🚀 Projets</h2>
+
+      <div class="card">
+        <h3>Projet 1 - Dashboard Cybersécurité</h3>
+
+        <p>
+          Création d’un dashboard de supervision avec Zabbix
+          et monitoring réseau.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Projet 2 - Site Web Portfolio</h3>
+
+        <p>
+          Développement d’un portfolio responsive en HTML/CSS/JS.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Projet 3 - Infrastructure Réseau</h3>
+
+        <p>
+          Mise en place d’une infrastructure sécurisée avec VLAN,
+          firewall et supervision.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+
+      <h2>🛠 Compétences</h2>
+
+      <div class="skills">
+
+        <div class="skill">HTML / CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Linux</div>
+        <div class="skill">Zabbix</div>
+        <div class="skill">GLPI</div>
+        <div class="skill">Cybersécurité</div>
+        <div class="skill">Réseaux</div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+
+      <h2>📞 Contact</h2>
+
+      <div class="card">
+        <p>Email : tonmail@example.com</p>
+        <p>LinkedIn : linkedin.com/in/tonprofil</p>
+        <p>GitHub : github.com/tonprofil</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 - TON NOM</p>
+  </footer>
+
+</body>
+</html>
