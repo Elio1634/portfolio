@@ -85,7 +85,7 @@
         .card:hover {
             transform: perspective(600px) rotateX(6deg) rotateY(-6deg) scale(1.03);
         }
-
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
     </style>
 </head>
 <body>
@@ -142,17 +142,301 @@
         </ul>
     </div>
     </section>
-    <section>
-        <h2>Projets</h2>
-        <div class="card">Projet 1 – Création d'un Serveur ZABBIX </div>
-        <p style="text-align: center;"><a href="Création_Zabbix.html " style="color:#00eaff;"> Plus de détails sur le projet</a></p>
-        <div class="card">Projet 2 – Attaque sur une infrastructure montée - v2</div>
-        <p style="text-align: center;"><a href="Attaque_création_inventée_v2.html" style="color:#00eaff;"> Plus de détails sur le projet</a></p>
-        <div class="card">Projet 3 – Attaque sur une infrastructure montée - v1</div>
-        <p style="text-align: center;"><a href="Attaque_création_inventée_v1.html" style="color:#00eaff;"> Plus de détails sur le projet</a></p>
-        <div class="card">Projet 4 – Dragons Animé</div>
-        <p style="text-align: center;"><a href="Dragon_Animé.html" style="color:#00eaff;"> Plus de détails sur le projet</a></p>
-    </section>
+<style>
+  :root {
+    --bg-card: #0f1120;
+    --bg-card-hover: #141628;
+    --border: rgba(99, 110, 255, 0.15);
+    --border-hover: rgba(99, 110, 255, 0.45);
+    --accent: #636eff;
+    --accent-soft: rgba(99, 110, 255, 0.12);
+    --text-muted: #7a7f9a;
+    --tag-bg: rgba(99, 110, 255, 0.1);
+    --tag-text: #8f97ff;
+    --tag-border: rgba(99, 110, 255, 0.25);
+    --radius: 14px;
+    --radius-sm: 6px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .section-title span {
+    color: var(--accent);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .card-emoji {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .card-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .card-context {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .card-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(99, 110, 255, 0.2);
+    border-radius: 20px;
+    padding: 0.2rem 0.6rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid var(--tag-border);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section>
+  <div class="section-header">
+    <span class="section-label">// réalisations</span>
+    <h1 class="section-title">Mes <span>Projets</span></h1>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="card-top">
+        <div class="card-emoji">🛡️</div>
+        <div class="card-meta">
+          <span class="card-context">SAE 34</span>
+          <span class="card-badge">Binôme</span>
+        </div>
+      </div>
+      <h2 class="card-title">Prise de contrôle &amp; Sécurisation Réseau</h2>
+      <div class="divider"></div>
+      <p class="card-desc">
+        Projet de pentest en environnement simulé. Identification de vulnérabilités, exploitation de failles (SMB, NFS, reverse shell, Jenkins, BoltWire) sur machines Windows &amp; Linux.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Pentest</span>
+        <span class="tag">Snort</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Windows</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-top">
+        <div class="card-emoji">🏢</div>
+        <div class="card-meta">
+          <span class="card-context">Fin 1re année</span>
+          <span class="card-badge">Groupe de 5</span>
+        </div>
+      </div>
+      <h2 class="card-title">Projet Intégratif — Infrastructure Réseau</h2>
+      <div class="divider"></div>
+      <p class="card-desc">
+        Conception et déploiement d'une infrastructure réseau complète pour une petite entreprise fictive. Architecture, câblage, configuration des équipements, adressage IP et sécurité.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Routeurs</span>
+        <span class="tag">Switchs</span>
+        <span class="tag">VLAN</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-top">
+        <div class="card-emoji">🧠</div>
+        <div class="card-meta">
+          <span class="card-context">TP autonome</span>
+          <span class="card-badge">Solo</span>
+        </div>
+      </div>
+      <h2 class="card-title">Jeu de Mémoire en PHP</h2>
+      <div class="divider"></div>
+      <p class="card-desc">
+        Développement d'un jeu de mémoire interactif en PHP, réalisé en autonomie sous supervision professorale.
+      </p>
+      <div class="card-tags">
+        <span class="tag">PHP</span>
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">Sessions</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-top">
+        <div class="card-emoji">🕵️</div>
+        <div class="card-meta">
+          <span class="card-context">Terminale</span>
+          <span class="card-badge">Groupe de 4</span>
+        </div>
+      </div>
+      <h2 class="card-title">Jeu d'Enquête Interactif</h2>
+      <div class="divider"></div>
+      <p class="card-desc">
+        Création d'un jeu vidéo interactif de type enquête policière, réalisé en groupe de 4 en terminale.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Jeu vidéo</span>
+        <span class="tag">Interactif</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-top">
+        <div class="card-emoji">🧩</div>
+        <div class="card-meta">
+          <span class="card-context">Semestre 1</span>
+          <span class="card-badge">Solo</span>
+        </div>
+      </div>
+      <h2 class="card-title">Tours de Hanoï — Python</h2>
+      <div class="divider"></div>
+      <p class="card-desc">
+        Implémentation algorithmique des Tours de Hanoï en Python avec visualisation et automatisation de la résolution.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Algorithmes</span>
+        <span class="tag">Récursion</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-top">
+        <div class="card-emoji">🌐</div>
+        <div class="card-meta">
+          <span class="card-context">S6</span>
+          <span class="card-badge">Solo</span>
+        </div>
+      </div>
+      <h2 class="card-title">Ce Portfolio Multilingue</h2>
+      <div class="divider"></div>
+      <p class="card-desc">
+        Conception et développement d'un portfolio personnel multilingue (6 langues) avec système de traduction dynamique et design responsive.
+      </p>
+      <div class="card-tags">
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">JSON</span>
+      </div>
+    </div>
+
+  </div>
+</section>
     <section>
         <h2>Formations</h2>
         <div class="card">
