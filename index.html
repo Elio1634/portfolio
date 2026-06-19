@@ -77,17 +77,236 @@ transform: perspective(600px) rotateX(6deg) rotateY(-6deg) scale(1.03);
 
 <canvas id="bg"></canvas>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Ely Gomez</title>
+
+<!-- Style holographique -->
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at center, #0a1226 0%, #020614 80%);
+    color: #e9f6ff;
+    overflow-x: hidden;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #a8e8ff;
+    text-shadow: 0 0 20px rgba(0,255,255,0.5);
+  }
+
+  h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid rgba(0,255,255,0.4);
+    display: inline-block;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    color: #b9eaff;
+  }
+
+  section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.08);
+    backdrop-filter: blur(8px);
+  }
+
+  h3 {
+    color: #90e0ff;
+    margin-bottom: 8px;
+  }
+
+  ul {
+    margin-top: 6px;
+    line-height: 1.6em;
+  }
+
+  p, li, a {
+    font-size: 1em;
+    color: #e4f9ff;
+  }
+
+  a {
+    color: #6fe8ff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .info {
+    text-align: center;
+    font-size: 1.1em;
+    color: #9de2ff;
+  }
+
+  /* Lignes holographiques animées */
+  @keyframes floatLine {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+  }
+
+  .divider {
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    margin: 40px auto;
+    animation: floatLine 3s ease-in-out infinite;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
 
 <header>
-<h1>Mon Portfolio Futuriste</h1>
-<p>Développeur – Informatique – Innovation</p>
+  <h1>CV - Ely Gomez</h1>
+  <p class="info">23 ans • Permis B • Véhicule personnel • Gannat (03800)</p>
+  <p class="info"><a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a> • 06.48.89.61.39 • <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank">LinkedIn</a></p>
 </header>
 
+<div class="divider"></div>
 
 <section>
-<h2>Présentation</h2>
-<p>Bienvenue dans mon univers numérique futuriste !</p>
+  <h2>Présentation</h2>
+  <p>Apprenti technicien en cybersécurité passionné par les technologies réseau, la sécurité informatique et le développement. Toujours en quête de nouveaux défis pour enrichir mes compétences techniques et renforcer mes connaissances dans le domaine de la cybersécurité.</p>
 </section>
 
+<section>
+  <h2>Compétences</h2>
+  <ul>
+    <li>HTML / CSS</li>
+    <li>Splunk</li>
+    <li>Wireshark</li>
+    <li>GLPI</li>
+    <li>Configuration et maintenance de matériels réseaux</li>
+  </ul>
+</section>
 
+<section>
+  <h2>Langues</h2>
+  <ul>
+    <li><strong>Anglais :</strong> Écrit 50% • Parlé 70% • Compréhension 85%</li>
+    <li><strong>Espagnol :</strong> Écrit 40% • Parlé 50% • Compréhension 60%</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Formations</h2>
+  <ul>
+    <li><strong>BUT Réseaux & Télécom – Cybersécurité</strong> – Clermont-Ferrand (2024 – 2026)</li>
+    <li><strong>Technicien Supérieur Systèmes et Réseaux</strong> – Tarbes (2022 – 2023)</li>
+    <li><strong>BTS SNIR</strong> – Lyon (2021 – 2022)</li>
+    <li><strong>BAC Sciences et Technologies de l’Agronomie et du Vivant</strong> – Pézenas (2020 – 2021)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Expériences Professionnelles</h2>
+
+  <h3>Administrateur Informatique – Tellus</h3>
+  <p><em>Saint-Germain-de-Salles (03140) | Septembre 2024 – Aujourd’hui</em></p>
+  <ul>
+    <li>Support utilisateurs</li>
+    <li>Gestion du parc imprimantes</li>
+    <li>Administration et exploitation des serveurs</li>
+    <li>Configuration d’un serveur Zabbix</li>
+  </ul>
+
+  <h3>Technicien Informatique – ConsortNT</h3>
+  <p><em>Castres (81) | Avril 2023 – Juillet 2024</em></p>
+  <ul>
+    <li>Supervision informatique</li>
+    <li>Traitement des backlogs et incidents</li>
+    <li>Support utilisateurs et gestion des appels</li>
+  </ul>
+
+  <h3>Technicien Réseaux – JM Sud Informatique</h3>
+  <p><em>Bédarieux (34) | Novembre 2022 – Janvier 2023</em></p>
+  <ul>
+    <li>Mise en place de sauvegardes et de postes de travail</li>
+    <li>Configuration d’applications de supervision</li>
+    <li>Maintenance et réparation de matériel informatique</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Hobbies</h2>
+  <ul>
+    <li><strong>Lecture :</strong> Lecture quotidienne, revues informatiques et ouvrages techniques.</li>
+    <li><strong>Sport :</strong> 12 ans de tennis en compétition départementale et régionale (équipe et solo), encadrement de jeunes joueurs. Aujourd’hui : footing et musculation réguliers.</li>
+    <li><strong>Développement :</strong> Conception de projets personnels pour améliorer mes compétences en programmation.</li>
+    <li><strong>Cinéma et séries :</strong> Passionné de science-fiction, de thrillers psychologique et d’univers futuristes.</li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <h2>Contact</h2>
+  <p>📧 <a href="mailto:elygomez340@gmail.com">elygomez340@gmail.com</a></p>
+  <p>📞 06.48.89.61.39</p>
+  <p>🔗 <a href="https://www.linkedin.com/in/ely-gomez-851b61210/" target="_blank">LinkedIn - Ely Gomez</a></p>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Fond holographique bleu clair
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const geometry = new THREE.BufferGeometry();
+  const vertices = [];
+  for (let i = 0; i < 1500; i++) {
+    vertices.push((Math.random() - 0.5) * 2000);
+    vertices.push((Math.random() - 0.5) * 2000);
+    vertices.push((Math.random() - 0.5) * 2000);
+  }
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+  const material = new THREE.PointsMaterial({ color: 0x66ffff, size: 2, transparent: true, opacity: 0.7 });
+  const stars = new THREE.Points(geometry, material);
+  scene.add(stars);
+
+  camera.position.z = 400;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    stars.rotation.x += 0.0007;
+    stars.rotation.y += 0.0009;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
+
+</body>
 </html>
