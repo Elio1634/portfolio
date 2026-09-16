@@ -305,6 +305,7 @@
 </head>
   
 <section>
+<div class="container">
       <h2>📌 Contexte</h2>
       <p>Bit à Part est une PME de 150 employés, spécialisée dans les solutions informatiques pour les collectivités territoriales. Elle propose des logiciels de gestion administrative, des outils de dématérialisation et des services de support pour les mairies, métropoles et autres services publics. L’attaquant profite du manque de sensibilisation et d’information des utilisateurs afin de récupérer leurs différents accès. Le lundi matin, un mail frauduleux redirige l’utilisateur vers une page Web qui est créée par nous et qui contient un virus injecté. Lorsqu’il arrive sur la page, nous demandons à l’utilisateur de se connecter avec les codes de son entreprise, alias les identifiants AD qu’il utilise tous les jours. Après avoir pu récupérer son mot de passe et son identifiant, nous pouvons ensuite commencer à rentrer dans l’attaque plus précise. À la suite de la connexion de Bob, nous pouvons prendre la main sur son poste. On installe une icône BIZARRE sur le poste (.bat). On fait une escalade de privilège sur le pc pour se mettre en administrateur sur la machine. On installe keylogger sur le pc, on le fait tourner en tache de fond. Pour la suppression, faire un script de demande de connexion administrateur. L’administrateur prends la main à distance et commence à se connecter. Récupération du fichier de garde mdp + id admin  Connexion en pivoting sur les serveurs On bloque l’entreprise en supprimant l’AD 
       </p>
