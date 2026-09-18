@@ -19,7 +19,33 @@
     --section-line: #C5D8EA;
     --tag-bg: #D4E8F5;
   }
+/* Boutons CV */
 
+.cv-actions{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.btn-download{
+    display:inline-block;
+    padding:12px 24px;
+    background:var(--accent);
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-family:'Raleway', sans-serif;
+    font-weight:700;
+    transition:all 0.3s ease;
+}
+
+.btn-download:hover{
+    background:var(--accent-dark);
+    transform:translateY(-3px);
+}
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
